@@ -7,7 +7,8 @@ By Savion, Zong You, Dana, Taylon and Kyran
 ## Features 💡
 - **Ordering & Checkout** features developed by Savion
 
-Key features implemented:
+Key features implemented: <br>
+
 \- Adding items to cart <br>
 \- Cart management <br>
 \- Multi-vendor order handling <br>
