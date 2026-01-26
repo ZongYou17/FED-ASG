@@ -19,6 +19,14 @@ Key features implemented: <br>
 
 - **Vendor Management** features developed by Zong You
 
+Key features implemented: <br>
+
+\- Stall Details <br>
+\- Alerts & Daily Sales  <br>
+\- Rental Details <br>
+\- Rental Renewal <br>
+\- Stall Weekly Dashboard <br>
+\- Feedback & Complaint Management <br>
   
 - **Sales & Analytics** features developed by Dana
 
