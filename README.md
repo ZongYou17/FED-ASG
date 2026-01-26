@@ -17,7 +17,7 @@ Key features implemented:
 - Payment processing
 - Payment process status display
 
-  
+<br>
 **Vendor Management** features developed by Zong You
 
 Key features implemented:
@@ -29,7 +29,7 @@ Key features implemented:
 - Stall Weekly Dashboard
 - Feedback & Complaint Management
 
-  
+<br>
 **Sales & Analytics** features developed by Dana
 
 
