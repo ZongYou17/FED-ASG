@@ -21,7 +21,31 @@
     border-radius: 4px;
 }
 
+.home-button {
+    padding: 6px 12px;
+    border: none;
+    background: #7f6565;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.Normal-login {
+    padding: 6px 12px;
+    border: none;
+    background: #7f6565;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
 .vendor-login {
+    padding: 6px 12px;
+    border: none;
+    background: #7f6565;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.Order-history {
     padding: 6px 12px;
     border: none;
     background: #7f6565;
@@ -41,7 +65,7 @@
 
 /* Hero Section */
 .hero {
-    background: #bdbdbd;
+    background: red;
     padding: 30px 20px 80px;
     position: relative;
 }
@@ -56,7 +80,10 @@
 }
 
 /* Dropdown Card */
-.dropdown-card {
+.dropdown-card-area {
+    display:flex;
+    flex-direction : column;
+    justify-content: center;
     background: #d1d1d1;
     width: 220px;
     padding: 15px;
