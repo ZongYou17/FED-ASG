@@ -6,125 +6,222 @@
 }
 
 .navbar {
-    height: 60px;
-    background: #ffffff;
+    background-color: #237023;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 0;
+}
+
+.Logo {
     display: flex;
     align-items: center;
-    padding: 0 20px;
     justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 15px 40px;
 }
 
-.logo {
-    width: 30px;
-    height: 30px;
-    background: #ffffff;
-    border-radius: 4px;
+/* Button styling */
+.navbar button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    color: #ffffff;
 }
 
+/* Home button (logo) - make it stand out */
 .home-button {
-    padding: 6px 12px;
-    border: none;
-    background: #ffffff;
-    cursor: pointer;
-    border-radius: 10px;
-}
-
-.Normal-login {
-    padding: 6px 12px;
-    border: none;
-    background: #ffffff;
-    cursor: pointer;
-    border-radius: 10px;
-}
-
-.vendor-login {
-    padding: 6px 12px;
-    border: none;
-    background: #ffffff;
-    cursor: pointer;
-    border-radius: 10px;
-}
-
-.Order-history {
-    padding: 6px 12px;
-    border: none;
-    background: #ffffff;
-    cursor: pointer;
-    border-radius: 10px;
-}
-
-.Cart {
-    padding: 6px 12px;
-    border: none;
-    background: #ffffff;
-    cursor: pointer;
-    border-radius: 10px;
-}
-
-
-.nav-icons span {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    background: #8f8e8e;
-    border-radius: 4px;
-    margin-left: 15px;
-
-}
-
-/* Hero Section */
-.hero {
-    background: red;
-    padding: 30px 20px 80px;
-    height: 300px;
-    position: relative;
-}/*Image */
-
-.hero h1 {
     font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 10px 0;
+    margin-right: auto;
 }
 
-.flavour-text {
-    margin-top: 8px;
-    color: #444;
+.home-button:hover {
+    color: #ffffff;
 }
 
-/* Dropdown Card */
-.dropdown-card-area {
-    display:flex;
-    flex-direction : column;
+/* Regular navigation buttons */
+.Normal-login,
+.vendor-login,
+.Order-history,
+.Cart {
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+.navbar button:hover {
+    background-color: #737373;
+    border-radius: 5px;
+}
+
+/* Special styling for Cart button */
+.Cart {
+    background-color: #757575;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 25px;
+}
+
+.Cart:hover {
+    background-color: #757575;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .Logo {
+        padding: 15px 20px;
+        flex-wrap: wrap;
+    }
+    
+    .navbar button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+    
+    .home-button {
+        font-size: 20px;
+    }
+}
+
+
+.hawker-background-image {
+    background-image: url('https://images.augustman.com/wp-content/uploads/sites/2/2022/06/20130110/51137099969_6d959e591b_o-1.jpeg');
+    background-size: cover;
+    background-position: center;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    background: #d1d1d1;
-    width: 220px;
-    padding: 15px;
-    height: 260px;
-
-    position: absolute;
-    top: 150px;
-    left: 100px;
+    padding: 40px 20px;
+    position: relative;
 }
 
 
-.dropdown-card label {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 6px;
-}
 
-.dropdown-card select {
-    width: 100%;
-    padding: 6px;
-}
-
-/* Main Content */
 .content {
-    height: 300px;
-    background: #ffffff;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: white;
+}
+
+.content h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.content p {
+    font-size: 22px;
+    font-weight: 300;
+}
+
+/* Hawker Centres Section */
+.hawker-centres-section {
+    max-width: 1400px;
+    margin: 80px auto;
+    padding: 0 40px;
+}
+
+.hawker-centres-section h2 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 50px;
+}
+
+/* Hawker Grid */
+.hawker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+/* Hawker Card */
+.hawker-card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.hawker-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border-color: #237023;
+}
+
+.hawker-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.hawker-info {
+    padding: 25px;
+}
+
+.hawker-info h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+    color: #333;
+    font-weight: bold;
+}
+
+.hawker-info .location {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.hawker-info .stall-count {
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.browse-button {
+    width: 100%;
+    padding: 14px 20px;
+    background-color: #237023;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.browse-button:hover {
+    background-color: #1a5a1a;
 }
 
 /* About Section */
 .about {
-    background: #bdbdbd;
+    background: #dce7dc;
     padding: 40px;
     text-align: center;
 }
@@ -133,10 +230,52 @@
     font-weight: normal;
 }
 
+.about p {
+    margin-top: 15px;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: #333;
+    padding-left: 300px;
+    padding-right: 300px;
+}
+
 /* Footer */
 .footer {
-    background: #6f6f6f;
+    background: #3a413c;
     color: white;
     text-align: center;
     padding: 20px;
+}
+
+.footer p {
+    margin: 5px 0;
+    color: grey;
+    text-align: center;
+}
+
+/* Responsive Design for Hawker Section */
+@media (max-width: 768px) {
+    .hawker-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-content h1 {
+        font-size: 32px;
+    }
+    
+    .hero-content p {
+        font-size: 18px;
+    }
+    
+    .hawker-centres-section {
+        padding: 0 20px;
+        margin: 50px auto;
+    }
+    
+    .about p {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }
