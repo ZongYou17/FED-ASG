@@ -1,7 +1,7 @@
 // Navigate to hawker centre details page
 function goToHawkerCentre(hawkerId) {
     // Redirect to hawker details page with the selected hawker centre
-    window.location.href = '../GitHub Repo/Fed-ASG/Order-Page/OrderSelectStall.html?centre'
+    window.location.href = '../Order-Page/Order-SelectStall.html?centre=' + hawkerId;
 }
 
 // Home button - go back to main page
