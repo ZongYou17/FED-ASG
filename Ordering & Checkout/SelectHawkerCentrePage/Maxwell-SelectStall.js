@@ -2,7 +2,7 @@ function goToMenu(stallId) {
     const stallPages = {
         'Tian-Tian-Chicken-Rice': '../Fooditem Page/TianTianChickenRice.html',
         'China Street Fritters': '../FoodItem Page/ChinaStreetFritters.html',
-        'Zhen ZHen Porridge': '../FoodItem Page/ZhenZhenPorridge.html',
+        'Zhen Zhen Porridge': '../FoodItem Page/ZhenZhenPorridge.html',
         'Maxwell Fuzhou Oyster Cake': '../FoodItem Page/MaxwellFuzhouOysterCake.html',
         'Hainanese Curry Rice': '../FoodItem Page/HainaneseCurryRice.html'
     };

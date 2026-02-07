@@ -1,13 +1,15 @@
 // Initialize quantities for each item
 let quantities = {
-    'csf-001': 1,
-    'csf-002': 1,
-    'csf-003': 1,
-    'csf-004': 1,
-    'csf-005': 1,
-    'csf-006': 1,
-    'csf-007': 1,
-    'csf-008': 1
+    'zzp-001': 1,
+    'zzp-002': 1,
+    'zzp-003': 1,
+    'zzp-004': 1,
+    'zzp-005': 1,
+    'zzp-006': 1,
+    'zzp-007': 1,
+    'zzp-008': 1,
+    'zzp-009': 1,
+    'zzp-010': 1
 };
 
 // Load page content
@@ -49,7 +51,7 @@ function addToCart(itemId, itemName, itemPrice) {
             name: itemName,
             price: itemPrice,
             quantity: quantity,
-            stallName: 'China Street Fritters',
+            stallName: 'Zhen Zhen Porridge',
             hawkerCentre: 'Telok Blangah Drive Food Centre'
         });
     }
