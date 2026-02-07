@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu - HawkerHub</title>
     <link rel="stylesheet" href="../style.css">
+    <style>
+    .menu-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 25px !important;
+    }
+</style>
 </head>
 
 <body>
@@ -25,7 +32,7 @@
         <div class="stall-header-content">
             <button class="back-button" onclick="goBack()">← Back to Stalls</button>
             <h1 id="stall-name">China Street Fritters</h1>
-            <p id="stall-address" class="address">Block 61 Telok Blangah Heights, #01-121, Singapore 100061</p>
+            <p id="stall-address" class="address">1 Kadayanallur Street, Singapore 069184</p>
             <div class="opening-hours">
                 <p><strong>Opening Hours</strong></p>
                 <p id="weekday-hours">Weekday: 11:00am - 8:00pm</p>

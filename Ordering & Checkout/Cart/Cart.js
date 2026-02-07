@@ -150,7 +150,7 @@ function displayEmptyCart() {
             <div class="empty-cart-icon">🛒</div>
             <h2>Your cart is empty</h2>
             <p>Add some delicious food to get started!</p>
-            <button onclick="continueShopping()" class="start-shopping-btn">Start Shopping</button>
+            <button onclick="continueShopping()" class="start-shopping-btn" >Start Shopping</button>
         </div>
     `;
     
@@ -174,5 +174,5 @@ function proceedToCheckout() {
 }
 
 function continueShopping() {
-    window.location.href = '../Main-Page/MainPage.html';
+    window.location.href = '../../Main-Page/MainPage.html';
 }

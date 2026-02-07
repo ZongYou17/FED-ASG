@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - HawkerHub</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="Logo">
+            <button class="home-button" onclick="window.location.href='../../Main-Page/MainPage.html'">Hawker Hub</button>   
+            <button class="Normal-login">Login</button>
+            <button class="vendor-login">Vendor Login</button> 
+            <button class="Order-history">Order History</button>
+            <button class="Cart" onclick="showCart()"> Cart (<span id="cart-count">0</span>) </button>
+            <button class="Feedback"> Feedback </button>
+        </div>
+    </header>
+
+    <!-- Stall Header -->
+    <section class="stall-header">
+        <div class="stall-header-content">
+            <button class="back-button" onclick="goBack()">← Back to Stalls</button>
+            <h1 id="stall-name">Zhen Zhen Porridge</h1>
+            <p id="stall-address" class="address">1 Kadayanallur Street, Singapore 069184</p>
+            <div class="opening-hours">
+                <p><strong>Opening Hours</strong></p>
+                <p id="weekday-hours">Weekday: 5:30am - 2:00pm</p>
+                <p id="weekend-hours">Weekend: 6:00am - 2:00pm</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Items Grid -->
+    <section class="menu-section">
+        <h2>Menu Items</h2>
+        <div class="menu-grid" id="menu-grid">
+            
+            <!-- Plain Porridge -->
+            <div class="menu-item">
+                <img src="images/ZhenZhenPorridge/plain.jpg" alt="Plain Porridge" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Plain Porridge</h3>
+                    <p class="menu-item-description">Simple and comforting rice porridge</p>
+                    <p class="menu-item-price">$3.50</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('zzp-001')">-</button>
+                            <span class="quantity-display" id="qty-zzp-001">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('zzp-001')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('zzp-001', 'Plain Porridge', 3.50)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Century Egg and Pork Porridge -->
+            <div class="menu-item">
+                <img src="images/ZhenZhenPorridge/Century Egg and Pork Porridge.jpg" alt="Century Egg and Pork Porridge" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Century Egg and Pork Porridge</h3>
+                    <p class="menu-item-description">Classic porridge with century egg and tender pork</p>
+                    <p class="menu-item-price">$5.00</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('zzp-002')">-</button>
+                            <span class="quantity-display" id="qty-zzp-002">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('zzp-002')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('zzp-002', 'Century Egg and Pork Porridge', 5.00)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chicken Porridge -->
+            <div class="menu-item">
+                <img src="images/ZhenZhenPorridge/chicken.jpg" alt="Chicken Porridge" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Chicken Porridge</h3>
+                    <p class="menu-item-description">Hearty porridge with tender chicken slices</p>
+                    <p class="menu-item-price">$4.50</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('zzp-003')">-</button>
+                            <span class="quantity-display" id="qty-zzp-003">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('zzp-003')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('zzp-003', 'Chicken Porridge', 4.50)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fish Porridge -->
+            <div class="menu-item">
+                <img src="images/ZhenZhenPorridge/Fish.jpg" alt="Fish Porridge" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Fish Porridge</h3>
+                    <p class="menu-item-description">Fresh fish slices in smooth porridge</p>
+                    <p class="menu-item-price">$6.00</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('zzp-004')">-</button>
+                            <span class="quantity-display" id="qty-zzp-004">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('zzp-004')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('zzp-004', 'Fish Porridge', 6.00)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mixed Pork Porridge -->
+            <div class="menu-item">
+                <img src="images/ZhenZhenPorridge/pork.jpg" alt="Mixed Pork Porridge" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Mixed Pork Porridge</h3>
+                    <p class="menu-item-description">Assorted pork slices and innards in savory porridge</p>
+                    <p class="menu-item-price">$5.50</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('zzp-005')">-</button>
+                            <span class="quantity-display" id="qty-zzp-005">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('zzp-005')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('zzp-005', 'Mixed Pork Porridge', 5.50)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Abalone Porridge -->
+            <div class="menu-item">
+                <img src="images/ZhenZhenPorridge/abalone_congee.jpg" alt="Abalone Porridge" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Abalone Porridge</h3>
+                    <p class="menu-item-description">Premium porridge with succulent abalone slices</p>
+                    <p class="menu-item-price">$10.00</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('zzp-006')">-</button>
+                            <span class="quantity-display" id="qty-zzp-006">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('zzp-006')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('zzp-006', 'Abalone Porridge', 10.00)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seafood Porridge -->
+            <div class="menu-item">
+                <img src="images/ZhenZhenPorridge/seafood.jpg" alt="Seafood Porridge" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Seafood Porridge</h3>
+                    <p class="menu-item-description">Mixed seafood delights in creamy porridge</p>
+                    <p class="menu-item-price">$8.50</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('zzp-007')">-</button>
+                            <span class="quantity-display" id="qty-zzp-007">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('zzp-007')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('zzp-007', 'Seafood Porridge', 8.50)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vegetable Porridge -->
+            <div class="menu-item">
+                <img src="images/ZhenZhenPorridge/vegetable.jpg" alt="Vegetable Porridge" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Vegetable Porridge</h3>
+                    <p class="menu-item-description">Healthy and nutritious vegetable porridge</p>
+                    <p class="menu-item-price">$4.00</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('zzp-008')">-</button>
+                            <span class="quantity-display" id="qty-zzp-008">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('zzp-008')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('zzp-008', 'Vegetable Porridge', 4.00)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Salted Egg Porridge -->
+            <div class="menu-item">
+                <img src="images/ZhenZhenPorridge/salted egg.jpg" alt="Salted Egg Porridge" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Salted Egg Porridge</h3>
+                    <p class="menu-item-description">Rich and savory salted egg porridge</p>
+                    <p class="menu-item-price">$5.50</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('zzp-009')">-</button>
+                            <span class="quantity-display" id="qty-zzp-009">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('zzp-009')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('zzp-009', 'Salted Egg Porridge', 5.50)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pork Porridge -->
+            <div class="menu-item">
+                <img src="images/ZhenZhenPorridge/pork  porridge.jpg" alt="Pork Porridge" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Pork Porridge</h3>
+                    <p class="menu-item-description">Traditional pork porridge with tender slices</p>
+                    <p class="menu-item-price">$4.00</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('zzp-010')">-</button>
+                            <span class="quantity-display" id="qty-zzp-010">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('zzp-010')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('zzp-010', 'Pork Porridge', 4.00)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>HawkerHub 2026</p>
+        <p>Terms and services</p>
+    </footer>
+
+    <!-- Add to Cart Notification -->
+    <div id="cart-notification" class="cart-notification">
+        <p>✓ Item added to cart!</p>
+    </div>
+
+    <script src="ZhenZhenPorridge.js"></script>
+</body>
+</html>
