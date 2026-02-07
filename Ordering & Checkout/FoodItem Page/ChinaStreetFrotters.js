@@ -94,7 +94,7 @@ function viewCart() {
 function goBack() {
     const urlParams = new URLSearchParams(window.location.search);
     const centreName = urlParams.get('centre');
-    window.location.href = '../SelectHawkerCentrePage/TelokBlangah-SelectStall.html?centre=' + encodeURIComponent(centreName);
+    window.location.href = '../SelectHawkerCentrePage/Maxwell-SelectStall.html?centre=' + encodeURIComponent(centreName);
 }
 
 // Show cart page
