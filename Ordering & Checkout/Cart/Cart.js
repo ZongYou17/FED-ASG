@@ -123,6 +123,7 @@ function updateOrderSummary() {
     document.getElementById('delivery-fee').textContent = `$${deliveryFee.toFixed(2)}`;
     document.getElementById('service-fee').textContent = `$${serviceFee.toFixed(2)}`;
     document.getElementById('total-amount').textContent = `$${total.toFixed(2)}`;
+
     
     // Save totals for checkout pages
     localStorage.setItem('orderTotals', JSON.stringify({
@@ -169,7 +170,7 @@ function proceedToCheckout() {
         alert('Your cart is empty!');
         return;
     }
-    window.location.href = '../Checkout-Page/PaymentMethod.html';
+    window.location.href = '../Payment Method/PaymentMethod.html';
 }
 
 function continueShopping() {

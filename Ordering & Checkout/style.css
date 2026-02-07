@@ -1,4 +1,9 @@
-/* Maxwell Page */
+html, body {
+       width: 100%;
+       overflow-x: hidden;
+       margin: 0 !important;
+       padding: 0 !important;
+}
 
 * {
     margin: 0;
@@ -7,7 +12,6 @@
     font-family: Arial, sans-serif;
 }
 
-/* Navbar - Same as main page */
 .navbar {
     background-color: #237023;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -15,15 +19,16 @@
     top: 0;
     z-index: 1000;
     padding: 0;
+    width: 100%;
 }
 
 .Logo {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1400px;
     margin: 0 auto;
     padding: 15px 40px;
+    width: 100%;
 }
 
 .navbar button {
@@ -75,6 +80,8 @@ background-image: url('https://www.nea.gov.sg/images/default-source/our-serivces
     padding: 60px 40px;
     position: relative;
     min-height: 350px;
+    width: 100%;
+    margin: 0;
 }
 
 .hawker-header::before {
@@ -129,6 +136,7 @@ background-image: url('https://www.nea.gov.sg/images/default-source/our-serivces
     background-color: #f5f5f5;
     padding: 30px 40px;
     border-bottom: 1px solid #ddd;
+    width: 100%;
 }
 
 .filter-container {
@@ -268,6 +276,7 @@ background-image: url('https://www.nea.gov.sg/images/default-source/our-serivces
     text-align: center;
     padding: 20px;
     margin-top: 60px;
+    width: 120%;
 }
 
 .footer p {
@@ -313,6 +322,7 @@ background-image: url('https://www.nea.gov.sg/images/default-source/our-serivces
     padding: 60px 40px;
     position: relative;
     min-height: 350px;
+    width: 100%;
 }
 
 /* Chinatown Complex */
@@ -325,6 +335,7 @@ background-image: url('https://www.nea.gov.sg/images/default-source/our-serivces
     padding: 60px 40px;
     position: relative;
     min-height: 350px;
+    width: 100%;
 }
 
 /* For TianTianChickenRice.html */
@@ -353,7 +364,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1400px;
     margin: 0 auto;
     padding: 15px 40px;
 }
@@ -1013,5 +1023,706 @@ body {
     .item-actions {
         width: 100%;
         justify-content: space-between;
+    }
+}
+
+/* Payment Method page */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+}
+
+.payment-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    padding: 40px 32px;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.payment-option {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    background: #f8f9fa;
+    border: 2px solid #e1e4e8;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 16px;
+}
+
+.payment-option:hover {
+    border-color: #c1c7cd;
+    background: #f0f2f5;
+}
+
+.payment-option.selected {
+    border-color: #3b82f6;
+    background: #eff6ff;
+}
+
+.payment-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.payment-icon {
+    font-size: 22px;
+}
+
+.payment-name {
+    font-weight: 500;
+    color: #374151;
+}
+
+.payment-option.selected .payment-name {
+    color: #1e40af;
+}
+
+.radio-button {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #d1d5db;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.payment-option.selected .radio-button {
+    border-color: #3b82f6;
+    background: #3b82f6;
+}
+
+.radio-inner {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: transparent;
+    transition: all 0.2s ease;
+}
+
+.payment-option.selected .radio-inner {
+    background: white;
+}
+
+.confirm-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+}
+
+.confirm-btn:hover {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+.confirm-btn:active {
+    transform: translateY(0);
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .payment-card {
+        padding: 32px 24px;
+    }
+    
+    .title {
+        font-size: 24px;
+    }
+    
+    .payment-option {
+        padding: 16px 18px;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+}
+
+.payment-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    padding: 40px 32px;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.payment-option {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    background: #f8f9fa;
+    border: 2px solid #e1e4e8;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 16px;
+}
+
+.payment-option:hover {
+    border-color: #c1c7cd;
+    background: #f0f2f5;
+}
+
+.payment-option.selected {
+    border-color: #3b82f6;
+    background: #eff6ff;
+}
+
+.payment-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.payment-icon {
+    font-size: 22px;
+}
+
+.payment-name {
+    font-weight: 500;
+    color: #374151;
+}
+
+.payment-option.selected .payment-name {
+    color: #1e40af;
+}
+
+.radio-button {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #d1d5db;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.payment-option.selected .radio-button {
+    border-color: #3b82f6;
+    background: #3b82f6;
+}
+
+.radio-inner {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: transparent;
+    transition: all 0.2s ease;
+}
+
+.payment-option.selected .radio-inner {
+    background: white;
+}
+
+.confirm-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+}
+
+.confirm-btn:hover {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+.confirm-btn:active {
+    transform: translateY(0);
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .payment-card {
+        padding: 32px 24px;
+    }
+    
+    .title {
+        font-size: 24px;
+    }
+    
+    .payment-option {
+        padding: 16px 18px;
+    }
+}
+
+/* Payment Detail Pages Styles */
+.back-btn {
+    background: none;
+    border: none;
+    color: #374151;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 8px 0;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s ease;
+}
+
+.back-btn:hover {
+    color: #1f2937;
+}
+
+.subtitle {
+    text-align: center;
+    color: #6b7280;
+    font-size: 14px;
+    margin-top: -20px;
+    margin-bottom: 32px;
+}
+
+.payment-form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background: #eff6ff;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.card-icons {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+}
+
+.form-group {
+    position: relative;
+}
+
+/* Apple Pay Specific */
+.apple-pay-info,
+.paynow-info,
+.cash-info {
+    text-align: center;
+    padding: 24px;
+    background: #f9fafb;
+    border-radius: 12px;
+    margin-bottom: 24px;
+}
+
+.apple-pay-icon,
+.paynow-icon,
+.cash-icon {
+    margin-bottom: 12px;
+}
+
+.info-text {
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* PayNow Specific */
+.qr-code-section {
+    margin: 24px 0;
+    text-align: center;
+}
+
+.qr-placeholder {
+    background: #f9fafb;
+    border: 2px dashed #d1d5db;
+    border-radius: 12px;
+    padding: 32px;
+}
+
+.qr-text {
+    color: #6b7280;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.divider {
+    text-align: center;
+    margin: 24px 0;
+    position: relative;
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: #e5e7eb;
+}
+
+.divider span {
+    background: white;
+    padding: 0 16px;
+    color: #9ca3af;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+}
+
+/* Order Summary */
+.order-summary {
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 24px 0;
+}
+
+.order-summary h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 16px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.summary-row.total {
+    border-top: 2px solid #e5e7eb;
+    padding-top: 12px;
+    margin-top: 12px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #1f2937;
+}
+
+/* Cash Payment Notice */
+.cash-notice {
+    background: #fef3c7;
+    border: 1px solid #fbbf24;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 16px 0;
+    text-align: center;
+}
+
+.cash-notice p {
+    color: #92400e;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Responsive for payment forms */
+@media (max-width: 480px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .subtitle {
+        font-size: 13px;
+    }
+}
+
+/* Success Page Styles */
+.success-card {
+    text-align: center;
+}
+
+.success-animation {
+    margin-bottom: 24px;
+}
+
+.checkmark-circle {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-radius: 50%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+    transform: scale(0);
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.checkmark-circle.animate {
+    transform: scale(1);
+}
+
+.checkmark {
+    color: white;
+    font-size: 56px;
+    font-weight: bold;
+    animation: checkmarkPop 0.3s ease 0.5s both;
+}
+
+@keyframes checkmarkPop {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.success-title {
+    color: #10b981;
+    margin-bottom: 8px;
+}
+
+.order-details {
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 24px 0;
+    text-align: left;
+}
+
+.order-details h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    font-size: 14px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.detail-value {
+    font-size: 14px;
+    color: #1f2937;
+    font-weight: 600;
+}
+
+.success-summary {
+    text-align: left;
+}
+
+.success-message {
+    background: #ecfdf5;
+    border: 1px solid #10b981;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 24px 0;
+}
+
+.success-message p {
+    color: #065f46;
+    font-size: 14px;
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.secondary-btn {
+    width: 100%;
+    padding: 16px;
+    background: white;
+    color: #374151;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.secondary-btn:hover {
+    border-color: #3b82f6;
+    color: #3b82f6;
+    background: #eff6ff;
+}
+.subtitle {
+    text-align: center;
+    color: #6b7280;
+    font-size: 14px;
+    margin-top: -20px;
+    margin-bottom: 32px;
+    padding: 20px;
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white;
+    }
+    
+    .action-buttons {
+        display: none;
+    }
+    
+    .payment-card {
+        box-shadow: none;
+        border: 1px solid #e5e7eb;
+    }
+}
+
+/* Success page responsive */
+@media (max-width: 480px) {
+    .checkmark-circle {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .checkmark {
+        font-size: 44px;
+    }
+    
+    .detail-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    
+    .detail-value {
+        font-size: 13px;
     }
 }
