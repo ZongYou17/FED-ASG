@@ -28,9 +28,7 @@ function showLogin() {
 
 // Vendor login button functionality
 function showVendorLogin() {
-    alert('Vendor login feature coming soon!');
-    // Later you can replace this with:
-    // window.location.href = 'vendor-login.html';
+    window.location.href = '../vendor-management/vendor-home.html';
 }
 
 // Order history button functionality

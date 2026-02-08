@@ -386,6 +386,27 @@
             color: #222;
         }
         
+                .status-expiring {
+            color: #f39c12;
+            font-weight: 600;
+        }
+        
+        .status-unrenewed {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+        
+        .status-renewed {
+            color: #27ae60;
+            font-weight: 600;
+        }
+        
+        .days-left {
+            font-weight: normal;
+            font-size: 20px;
+            color: #666;
+        }
+
         /* Responsive design */
         @media (max-width: 1200px) {
             .section-title {
@@ -724,6 +745,10 @@
             <button id="closeRenewSuccess" class="renew-success-btn">OK</button>
         </div>
     </div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
 
     <script src="vendor-rental.js"></script>
 </body>
