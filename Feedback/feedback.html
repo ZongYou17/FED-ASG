@@ -9,9 +9,9 @@
 <body>
     <header class="navbar">
         <div class="Logo">
-            <button class="home-button" onclick="window.location.href='MainPage.html'"> Hawker Hub </button>   
+            <button class="home-button" onclick="window.location.href='../Main-Page/MainPage.html'"> Hawker Hub </button>   
             <button class="Normal-login" onclick="showLogin()"> Login </button>
-            <button class="vendor-login" onclick="showVendorLogin()"> Vendor login </button> 
+            <button class="vendor-login" onclick="window.location.href='../vendor-management/vendor-home.html'"> Vendor login </button> 
             <button class="Order-history" onclick="showOrderHistory()"> Order History </button>
             <button class="Cart" onclick="viewCart()"> Cart (<span id="cart-count">0</span>) </button>
             <button class="Feedback" onclick="window.location.href='feedback.html'"> Feedback </button>
@@ -36,7 +36,7 @@
                         <span class="dropdown-arrow">▼</span>
                     </button>
                     <div id="hawker-center-dropdown" class="dropdown-menu">
-                        <div class="dropdown-item" onclick="window.location.href='feedback.html'">Main Page</div>
+                        <div class="dropdown-item" onclick="window.location.href='MainPage.html'">Main Page</div>
                         <div class="dropdown-item" onclick="window.location.href='maxwell-food-centre.html'">Maxwell Food Centre</div>
                         <div class="dropdown-item" onclick="window.location.href='chinatown-complex.html'">Chinatown Complex</div>
                         <div class="dropdown-item" onclick="window.location.href='lau-pa-sat.html'">Lau Pa Sat</div>
@@ -78,7 +78,7 @@
                 <!-- Recommendation Section -->
                 <div class="card card-clickable" onclick="navigateToView('stall-recommendation')">
                     <h2 class="section-title">Recommendation</h2>
-                    <div class="food-placeholder">🍜</div>
+                    <img src="../Main-Page/Images/hawker-centre.jpg" alt="Hawker Center" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;">
                     <div class="recommendation-text">
                         <div>Select a hawker center to view popular items</div>
                         <div>
@@ -217,6 +217,38 @@
                 menu.classList.remove('active');
             });
         });
+
+        // Navbar functions
+        function showLogin() {
+            alert('Login feature coming soon!');
+        }
+
+        function showVendorLogin() {
+            alert('Vendor login feature coming soon!');
+        }
+
+        function showOrderHistory() {
+            alert('Order history feature coming soon!');
+        }
+
+        function viewCart() {
+            alert('Cart feature coming soon!');
+        }
+
+        // Load cart count when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+        });
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('hawkerCart')) || [];
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            
+            const cartCountSpan = document.getElementById('cart-count');
+            if (cartCountSpan) {
+                cartCountSpan.textContent = totalItems;
+            }
+        }
     </script>
 </body>
 </html>
