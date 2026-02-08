@@ -1,79 +1,93 @@
+// Firebase config
+const firebaseConfig = {
+  databaseURL:
+    "https://hawker-hub-app-default-rtdb.asia-southeast1.firebasedatabase.app/"
+};
 
-const userId = "userId123"; // replace dynamically if you have auth
-const baseURL = "https://hawker-hub-app-default-rtdb.asia-southeast1.firebasedatabase.app/orders/";
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+
+// Stall → Image mapping
+const stallImages = {
+  // Maxwell
+  "Tian Tian Hainanese Chicken Rice": "../images/stalls/maxwell/tiantian.jpg",
+  "China Street Fritters": "../images/stalls/maxwell/chinastreetfritters.jpg",
+  "Zhen Zhen Porridge": "../images/stalls/maxwell/zhenzhen.jpg",
+  "Fried Kway Teow": "../images/stalls/maxwell/charkwayteow.jpg",
+  "Selera Rasa Nasi Lemak": "../images/stalls/maxwell/selerarasa.jpg",
+  "Maxwell Indian Muslim Food": "../images/stalls/maxwell/indianmuslim.jpg",
+
+  // Lau Pa Sat
+  "Satay Street": "../images/stalls/laupasat/sataystreet.jpg",
+  "Thunder Tea Rice": "../images/stalls/laupasat/thundertearice.jpg",
+  "Golden Shoe Hokkien Mee": "../images/stalls/laupasat/goldenshoe.jpg",
+  "Ipoh Hainanese Chicken Rice": "../images/stalls/laupasat/ipohchickenrice.jpg",
+
+  // Chinatown
+  "Liao Fan Hawker Chan": "../images/stalls/chinatown/liaofan.jpg",
+  "Lian He Ben Ji Claypot": "../images/stalls/chinatown/lianhebenji.jpg",
+  "Old Amoy Chendol": "../images/stalls/chinatown/oldamoychendol.jpg"
+};
+
 const container = document.getElementById("orderHistoryContainer");
-const filterSelect = document.getElementById("hawkerFilter");
+const filter = document.getElementById("hawkerFilter");
 
 let allOrders = [];
 
-fetch(`${baseURL}${userId}.json`)
-  .then(res => res.json())
-  .then(data => {
-    if (!data) {
-      container.innerHTML = "<p>No orders found.</p>";
-      return;
-    }
-
-    allOrders = Object.values(data).reverse();
-    populateFilter(allOrders);
-    renderOrders(allOrders);
-  })
-  .catch(() => {
-    container.innerHTML = "<p>Failed to load order history.</p>";
-  });
-
-function populateFilter(orders) {
-  const centres = [...new Set(orders.map(o => o.hawkerCentre))];
-  centres.forEach(c => {
-    const opt = document.createElement("option");
-    opt.value = c;
-    opt.textContent = c;
-    filterSelect.appendChild(opt);
-  });
-}
-
-filterSelect.addEventListener("change", () => {
-  const value = filterSelect.value;
-  const filtered =
-    value === "all"
-      ? allOrders
-      : allOrders.filter(o => o.hawkerCentre === value);
-  renderOrders(filtered);
-});
-
-function renderOrders(orders) {
+function renderOrders(hawker) {
   container.innerHTML = "";
 
-  orders.forEach(order => {
-    const date = new Date(order.timestamp).toLocaleString();
-    let itemsHTML = "";
+  const filtered =
+    hawker === "all"
+      ? allOrders
+      : allOrders.filter(o => o.hawkerCentre === hawker);
 
-    order.items.forEach(item => {
-      itemsHTML += `
-        <div class="order-item">
-          <span>${item.qty} × ${item.name}</span>
-          <span>$${(item.price * item.qty).toFixed(2)}</span>
-        </div>
-      `;
-    });
+  if (filtered.length === 0) {
+    container.innerHTML = "<p>No orders found.</p>";
+    return;
+  }
 
-    container.innerHTML += `
-      <div class="order-card">
-        <div class="order-header">
-          <h3>${order.stallName}</h3>
-          <span class="status completed">${order.status}</span>
-        </div>
+  filtered.forEach(order => {
+    const img =
+      stallImages[order.stallName] ||
+      "../images/stalls/default-stall.jpg";
 
-        <div class="order-meta">
-          <p>${order.hawkerCentre}</p>
-          <p>${date}</p>
-        </div>
+    const card = document.createElement("div");
+    card.className = "order-card";
 
-        <div class="order-items">
-          ${itemsHTML}
-          <div class="total">Total: $${order.totalPrice.toFixed(2)}</div>
-        </div>
+    card.innerHTML = `
+      <img src="${img}" alt="${order.stallName}">
+      <div class="order-content">
+        <h3>${order.stallName}</h3>
+        <p><strong>Order ID:</strong> ${order.orderId}</p>
+        <p><strong>Total:</strong> $${order.total}</p>
+        <p><strong>Date:</strong> ${order.date}</p>
+        <span class="hawker-badge">${order.hawkerCentre}</span>
       </div>
     `;
+
+    container.appendChild(card);
   });
 }
+
+// Fetch from Firebase
+firebase
+  .database()
+  .ref("orders")
+  .on("value", snapshot => {
+    allOrders = [];
+
+    snapshot.forEach(child => {
+      allOrders.push({
+        orderId: child.key,
+        ...child.val()
+      });
+    });
+
+    renderOrders(filter.value);
+  });
+
+// Filter change
+filter.addEventListener("change", () => {
+  renderOrders(filter.value);
+});

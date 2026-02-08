@@ -1,102 +1,96 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-}
-
-/* Header */
+/* Page header */
 .page-header {
-  background-color: #ffffff;
-  padding: 20px 30px;
+  padding: 20px;
+  background: #f8f8f8;
   border-bottom: 1px solid #ddd;
 }
 
 .page-header h1 {
   margin: 0;
-  font-size: 24px;
+  font-size: 28px;
+  color: #333;
 }
 
 .page-header p {
-  margin-top: 6px;
+  margin-top: 5px;
   color: #666;
 }
 
 /* Filter */
-.filter-bar {
-  background-color: #ffffff;
-  padding: 15px 30px;
-  border-bottom: 1px solid #ddd;
+.filter-section {
+  padding: 20px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
 }
 
-.filter-bar label {
+.filter-section label {
+  font-weight: 600;
   margin-right: 10px;
-  font-weight: bold;
 }
 
-.filter-bar select {
-  padding: 6px 10px;
-  border-radius: 4px;
+.filter-section select {
+  padding: 8px 12px;
+  border-radius: 6px;
   border: 1px solid #ccc;
 }
 
-/* Order list */
-.order-history {
-  padding: 20px 30px;
+/* Grid */
+.order-history-grid {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
 }
 
+/* Card */
 .order-card {
-  background-color: #ffffff;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: transform 0.2s;
 }
 
-.order-header {
-  display: flex;
-  justify-content: space-between;
+.order-card:hover {
+  transform: translateY(-4px);
 }
 
-.order-header h3 {
-  margin: 0;
-  font-size: 17px;
+/* Image */
+.order-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
 }
 
-.status {
-  font-size: 12px;
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-weight: bold;
+/* Content */
+.order-content {
+  padding: 15px;
 }
 
-.status.completed {
-  background-color: #e6f4ea;
-  color: #1e7e34;
+.order-content h3 {
+  margin: 0 0 5px;
+  font-size: 18px;
+  color: #222;
 }
 
-.order-meta {
-  margin-top: 6px;
+.order-content p {
+  margin: 4px 0;
   font-size: 14px;
   color: #555;
 }
 
-.order-items {
+/* Badge */
+.hawker-badge {
+  display: inline-block;
   margin-top: 10px;
-  border-top: 1px solid #eee;
-  padding-top: 10px;
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 20px;
+  background: #ffe9cc;
+  color: #a25b00;
+  font-weight: 600;
 }
 
-.order-item {
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  margin-bottom: 6px;
-}
 
-.total {
-  margin-top: 8px;
-  text-align: right;
-  font-weight: bold;
-}
 
 
