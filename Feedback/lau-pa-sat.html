@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lau Pa Sat - Review System</title>
+    <link rel="stylesheet" href="feedback.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="Logo">
+            <button class="home-button" onclick="window.location.href='MainPage.html'"> Hawker Hub </button>   
+            <button class="Normal-login" onclick="showLogin()"> Login </button>
+            <button class="vendor-login" onclick="showVendorLogin()"> Vendor login </button> 
+            <button class="Order-history" onclick="showOrderHistory()"> Order History </button>
+            <button class="Cart" onclick="viewCart()"> Cart (<span id="cart-count">0</span>) </button>
+            <button class="Feedback" onclick="window.location.href='feedback.html'"> Feedback </button>
+        </div>
+    </header>
+
+    <div class="nav-tabs">
+        <button class="nav-btn active" data-view="main">Main View</button>
+        <button class="nav-btn" data-view="stall-review">Stall Reviews</button>
+        <button class="nav-btn" data-view="stall-recommendation">Recommendations</button>
+        <button class="nav-btn" data-view="hygiene">Hygiene</button>
+    </div>
+
+    <div class="container">
+        <!-- Main View -->
+        <div id="main" class="view active">
+            <div class="header">
+                <div class="header-icon">✓</div>
+                <div class="dropdown">
+                    <button class="dropdown-toggle" onclick="toggleDropdown('hawker-center-dropdown')" style="font-size: 24px; font-weight: 600; padding: 0;">
+                        <span id="selected-hawker-center">Lau Pa Sat</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div id="hawker-center-dropdown" class="dropdown-menu">
+                        <div class="dropdown-item" onclick="window.location.href='feedback.html'">Hawker Center Name</div>
+                        <div class="dropdown-item" onclick="window.location.href='maxwell-food-centre.html'">Maxwell Food Centre</div>
+                        <div class="dropdown-item" onclick="window.location.href='chinatown-complex.html'">Chinatown Complex</div>
+                        <div class="dropdown-item" onclick="window.location.href='lau-pa-sat.html'">Lau Pa Sat</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <!-- Review Section -->
+                <div>
+                    <div class="card card-bordered card-clickable" onclick="navigateToView('stall-review')">
+                        <h2 class="section-title">Review</h2>
+                        <div class="review-pics">
+                            <div class="pic-circle">Pic</div>
+                            <div class="pic-square">Pic</div>
+                        </div>
+                        <div class="review-info">
+                            <div class="name">Marcus Lim</div>
+                            <div>Satay by the Bay</div>
+                            <div>Rating : 5</div>
+                            <div>Comment: Perfectly grilled satay! The peanut sauce is amazing.</div>
+                        </div>
+                        <button class="add-review-btn" onclick="event.stopPropagation(); alert('Review feature coming soon!')">+ Add your review</button>
+                    </div>
+
+                    <div class="card card-clickable" style="margin-top: 20px;" onclick="navigateToView('hygiene')">
+                        <div style="margin-bottom: 15px; font-weight: 600;">Hygiene Grade</div>
+                        <div class="hygiene-section">
+                            <div class="stall-badge">Stall</div>
+                            <div style="font-size: 14px;">
+                                <div>Satay by the Bay</div>
+                                <div>Hygiene Grade: A</div>
+                                <div>Remark: Excellent food safety practices</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendation Section -->
+                <div class="card card-clickable" onclick="navigateToView('stall-recommendation')">
+                    <h2 class="section-title">Recommendation</h2>
+                    <div class="food-placeholder">🍢 Satay</div>
+                    <div class="recommendation-text">
+                        <div>Satay is the most popular item this week</div>
+                        <div>
+                            <div>Current wait time: 10 minutes</div>
+                            <div>Usual Peak Hour: 7:00pm - 9:00pm (Now is 3:15pm)</div>
+                            <div>Special: Satay Street open tonight!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stall Review View -->
+        <div id="stall-review" class="view">
+            <div class="header">
+                <div class="header-icon">✓</div>
+                <h1>Lau Pa Sat - Stall Reviews</h1>
+            </div>
+
+            <div class="card">
+                <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 20px;">Recent Reviews</h3>
+
+                <div id="review-list">
+                    <div class="review-item">
+                        <div class="review-avatar">ML</div>
+                        <div class="review-content">
+                            <div style="font-weight: 600;">Marcus Lim</div>
+                            <div>Satay by the Bay</div>
+                            <div>Rating : 5</div>
+                            <div>Comment: Perfectly grilled satay! The peanut sauce is amazing.</div>
+                        </div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-avatar">KT</div>
+                        <div class="review-content">
+                            <div style="font-weight: 600;">Karen Teo</div>
+                            <div>Bismillah Biryani</div>
+                            <div>Rating : 5</div>
+                            <div>Comment: Authentic Indian flavors! The biryani rice is fragrant and perfectly spiced.</div>
+                        </div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-avatar">BC</div>
+                        <div class="review-content">
+                            <div style="font-weight: 600;">Benjamin Chua</div>
+                            <div>Hock Lam Beef Noodles</div>
+                            <div>Rating : 4</div>
+                            <div>Comment: Tender beef slices and rich broth. A comfort food classic.</div>
+                        </div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-avatar">SN</div>
+                        <div class="review-content">
+                            <div style="font-weight: 600;">Siti Nurhaliza</div>
+                            <div>Rojak & Popiah</div>
+                            <div>Rating : 5</div>
+                            <div>Comment: Fresh ingredients and well-balanced sauce. Best rojak in CBD!</div>
+                        </div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-avatar">HL</div>
+                        <div class="review-content">
+                            <div style="font-weight: 600;">Henry Lee</div>
+                            <div>Lau Pa Sat Laksa</div>
+                            <div>Rating : 4</div>
+                            <div>Comment: Creamy coconut broth with generous toppings. Spicy and satisfying!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommendation View -->
+        <div id="stall-recommendation" class="view">
+            <div class="header">
+                <div class="header-icon">✓</div>
+                <h1>Lau Pa Sat - Recommendations</h1>
+            </div>
+
+            <div class="card">
+                <h2 class="section-title">Popular Items This Week</h2>
+                
+                <div class="food-item">
+                    <div class="food-pic">🍢</div>
+                    <div class="food-info">
+                        <div style="font-weight: 600;">Satay (Chicken/Mutton)</div>
+                        <div>Satay by the Bay</div>
+                        <div>Average Rating: 4.9/5</div>
+                    </div>
+                </div>
+
+                <div class="food-item">
+                    <div class="food-pic">🍛</div>
+                    <div class="food-info">
+                        <div style="font-weight: 600;">Chicken Biryani</div>
+                        <div>Bismillah Biryani</div>
+                        <div>Average Rating: 4.8/5</div>
+                    </div>
+                </div>
+
+                <div class="food-item">
+                    <div class="food-pic">🍜</div>
+                    <div class="food-info">
+                        <div style="font-weight: 600;">Beef Noodles</div>
+                        <div>Hock Lam Beef Noodles</div>
+                        <div>Average Rating: 4.6/5</div>
+                    </div>
+                </div>
+
+                <div class="food-item">
+                    <div class="food-pic">🥗</div>
+                    <div class="food-info">
+                        <div style="font-weight: 600;">Rojak</div>
+                        <div>Rojak & Popiah</div>
+                        <div>Average Rating: 4.7/5</div>
+                    </div>
+                </div>
+
+                <div class="food-item">
+                    <div class="food-pic">🍜</div>
+                    <div class="food-info">
+                        <div style="font-weight: 600;">Laksa</div>
+                        <div>Lau Pa Sat Laksa</div>
+                        <div>Average Rating: 4.5/5</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hygiene View -->
+        <div id="hygiene" class="view">
+            <div class="header">
+                <div class="header-icon">✓</div>
+                <h1>Lau Pa Sat - Hygiene Grades</h1>
+            </div>
+
+            <div class="hygiene-detail">
+                <h3>Overall Hawker Centre Grade: A</h3>
+                <div class="grade">Recent Inspection: January 2026</div>
+                <div class="remark">Lau Pa Sat maintains exceptional hygiene standards befitting its status as an iconic heritage hawker centre. Regular deep cleaning and strict food safety protocols are observed across all stalls.</div>
+                
+                <div style="margin-top: 30px;">
+                    <h3 style="font-size: 18px; margin-bottom: 15px;">Individual Stall Grades</h3>
+                    
+                    <div class="activity-box">
+                        <div class="title">Satay by the Bay - Grade A</div>
+                        <div class="info">Excellent grilling station hygiene and food handling</div>
+                    </div>
+
+                    <div class="activity-box">
+                        <div class="title">Bismillah Biryani - Grade A</div>
+                        <div class="info">Proper food storage and preparation standards</div>
+                    </div>
+
+                    <div class="activity-box">
+                        <div class="title">Hock Lam Beef Noodles - Grade B</div>
+                        <div class="info">Good practices with minor recommendations for improvement</div>
+                    </div>
+
+                    <div class="activity-box">
+                        <div class="title">Rojak & Popiah - Grade A</div>
+                        <div class="info">Outstanding cleanliness and fresh ingredient handling</div>
+                    </div>
+
+                    <div class="activity-box">
+                        <div class="title">Lau Pa Sat Laksa - Grade A</div>
+                        <div class="info">Excellent kitchen hygiene and food safety compliance</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation between views
+        const navButtons = document.querySelectorAll('.nav-btn');
+        const views = document.querySelectorAll('.view');
+
+        navButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const viewName = button.getAttribute('data-view');
+                navigateToView(viewName);
+            });
+        });
+
+        function navigateToView(viewName) {
+            views.forEach(view => view.classList.remove('active'));
+            navButtons.forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(viewName).classList.add('active');
+            const activeBtn = document.querySelector(`[data-view="${viewName}"]`);
+            if (activeBtn) activeBtn.classList.add('active');
+        }
+
+        // Dropdown toggle
+        function toggleDropdown(dropdownId) {
+            event.stopPropagation();
+            const dropdown = document.getElementById(dropdownId);
+            
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                if (menu.id !== dropdownId) {
+                    menu.classList.remove('active');
+                }
+            });
+            
+            dropdown.classList.toggle('active');
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                menu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

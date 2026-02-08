@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hawker Center Review System</title>
+    <title>Chinatown Complex - Review System</title>
     <link rel="stylesheet" href="feedback.css">
 </head>
 <body>
@@ -32,11 +32,11 @@
                 <div class="header-icon">✓</div>
                 <div class="dropdown">
                     <button class="dropdown-toggle" onclick="toggleDropdown('hawker-center-dropdown')" style="font-size: 24px; font-weight: 600; padding: 0;">
-                        <span id="selected-hawker-center">Select Hawker Center</span>
+                        <span id="selected-hawker-center">Chinatown Complex</span>
                         <span class="dropdown-arrow">▼</span>
                     </button>
                     <div id="hawker-center-dropdown" class="dropdown-menu">
-                        <div class="dropdown-item" onclick="window.location.href='feedback.html'">Main Page</div>
+                        <div class="dropdown-item" onclick="window.location.href='feedback.html'">Hawker Center Name</div>
                         <div class="dropdown-item" onclick="window.location.href='maxwell-food-centre.html'">Maxwell Food Centre</div>
                         <div class="dropdown-item" onclick="window.location.href='chinatown-complex.html'">Chinatown Complex</div>
                         <div class="dropdown-item" onclick="window.location.href='lau-pa-sat.html'">Lau Pa Sat</div>
@@ -54,12 +54,12 @@
                             <div class="pic-square">Pic</div>
                         </div>
                         <div class="review-info">
-                            <div class="name">Select a hawker center to view reviews</div>
-                            <div>Use the dropdown above to choose a location</div>
-                            <div>Rating : -</div>
-                            <div>Comment: ---</div>
+                            <div class="name">David Wong</div>
+                            <div>Lian He Ben Ji Claypot Rice</div>
+                            <div>Rating : 5</div>
+                            <div>Comment: Amazing claypot rice! The crispy rice at the bottom is perfect.</div>
                         </div>
-                        <button class="add-review-btn" onclick="event.stopPropagation(); alert('Please select a hawker center first!')">+ Add your review</button>
+                        <button class="add-review-btn" onclick="event.stopPropagation(); alert('Review feature coming soon!')">+ Add your review</button>
                     </div>
 
                     <div class="card card-clickable" style="margin-top: 20px;" onclick="navigateToView('hygiene')">
@@ -67,9 +67,9 @@
                         <div class="hygiene-section">
                             <div class="stall-badge">Stall</div>
                             <div style="font-size: 14px;">
-                                <div>Select Hawker Center</div>
-                                <div>Hygiene Grade: -</div>
-                                <div>Remark: Please choose a location</div>
+                                <div>Lian He Ben Ji Claypot Rice</div>
+                                <div>Hygiene Grade: A</div>
+                                <div>Remark: Outstanding cleanliness standards</div>
                             </div>
                         </div>
                     </div>
@@ -78,14 +78,12 @@
                 <!-- Recommendation Section -->
                 <div class="card card-clickable" onclick="navigateToView('stall-recommendation')">
                     <h2 class="section-title">Recommendation</h2>
-                    <div class="food-placeholder">🍜</div>
+                    <div class="food-placeholder">🍲 Claypot Rice</div>
                     <div class="recommendation-text">
-                        <div>Select a hawker center to view popular items</div>
+                        <div>Claypot Rice is the most popular item this week</div>
                         <div>
-                            <div>Choose from our featured locations:</div>
-                            <div style="margin-top: 10px;">• Maxwell Food Centre</div>
-                            <div>• Chinatown Complex</div>
-                            <div>• Lau Pa Sat</div>
+                            <div>Current wait time: 25 minutes</div>
+                            <div>Usual Peak Hour: 6:00pm - 7:30pm (Now is 2:00pm)</div>
                         </div>
                     </div>
                 </div>
@@ -96,7 +94,7 @@
         <div id="stall-review" class="view">
             <div class="header">
                 <div class="header-icon">✓</div>
-                <h1>Hawker Center - Stall Reviews</h1>
+                <h1>Chinatown Complex - Stall Reviews</h1>
             </div>
 
             <div class="card">
@@ -104,12 +102,42 @@
 
                 <div id="review-list">
                     <div class="review-item">
-                        <div class="review-avatar">?</div>
+                        <div class="review-avatar">DW</div>
                         <div class="review-content">
-                            <div style="font-weight: 600;">Select a hawker center</div>
-                            <div>Please use the dropdown menu to choose a location</div>
-                            <div>Rating : -</div>
-                            <div>Comment: Reviews will appear here once you select a hawker center</div>
+                            <div style="font-weight: 600;">David Wong</div>
+                            <div>Lian He Ben Ji Claypot Rice</div>
+                            <div>Rating : 5</div>
+                            <div>Comment: Amazing claypot rice! The crispy rice at the bottom is perfect.</div>
+                        </div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-avatar">AL</div>
+                        <div class="review-content">
+                            <div style="font-weight: 600;">Angela Lee</div>
+                            <div>Outram Park Fried Kway Teow Mee</div>
+                            <div>Rating : 5</div>
+                            <div>Comment: Super wok hei! The best char kway teow in Chinatown.</div>
+                        </div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-avatar">RT</div>
+                        <div class="review-content">
+                            <div style="font-weight: 600;">Robert Tan</div>
+                            <div>Hong Kong Soya Sauce Chicken</div>
+                            <div>Rating : 4</div>
+                            <div>Comment: Very affordable and tasty. Great value for money.</div>
+                        </div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-avatar">PN</div>
+                        <div class="review-content">
+                            <div style="font-weight: 600;">Priya Nair</div>
+                            <div>Jian Bo Shui Kueh</div>
+                            <div>Rating : 5</div>
+                            <div>Comment: Authentic taste! Love the handmade texture.</div>
                         </div>
                     </div>
                 </div>
@@ -120,23 +148,45 @@
         <div id="stall-recommendation" class="view">
             <div class="header">
                 <div class="header-icon">✓</div>
-                <h1>Hawker Center - Recommendations</h1>
+                <h1>Chinatown Complex - Recommendations</h1>
             </div>
 
             <div class="card">
-                <h2 class="section-title">Popular Items</h2>
+                <h2 class="section-title">Popular Items This Week</h2>
                 
-                <div class="recommendation-text" style="padding: 30px; text-align: center;">
-                    <div style="font-size: 18px; font-weight: 600; margin-bottom: 15px;">Welcome to Hawker Hub!</div>
-                    <div>Please select a hawker center from the dropdown menu to view:</div>
-                    <div style="margin-top: 20px;">
-                        <div>✓ Popular food items</div>
-                        <div>✓ Customer recommendations</div>
-                        <div>✓ Peak hour information</div>
-                        <div>✓ Wait times</div>
+                <div class="food-item">
+                    <div class="food-pic">🍲</div>
+                    <div class="food-info">
+                        <div style="font-weight: 600;">Claypot Rice</div>
+                        <div>Lian He Ben Ji Claypot Rice</div>
+                        <div>Average Rating: 4.9/5</div>
                     </div>
-                    <div style="margin-top: 20px; font-size: 16px; color: #3b82f6;">
-                        Choose from Maxwell Food Centre, Chinatown Complex, or Lau Pa Sat!
+                </div>
+
+                <div class="food-item">
+                    <div class="food-pic">🍜</div>
+                    <div class="food-info">
+                        <div style="font-weight: 600;">Char Kway Teow</div>
+                        <div>Outram Park Fried Kway Teow Mee</div>
+                        <div>Average Rating: 4.8/5</div>
+                    </div>
+                </div>
+
+                <div class="food-item">
+                    <div class="food-pic">🍗</div>
+                    <div class="food-info">
+                        <div style="font-weight: 600;">Soya Sauce Chicken</div>
+                        <div>Hong Kong Soya Sauce Chicken</div>
+                        <div>Average Rating: 4.6/5</div>
+                    </div>
+                </div>
+
+                <div class="food-item">
+                    <div class="food-pic">🥟</div>
+                    <div class="food-info">
+                        <div style="font-weight: 600;">Shui Kueh</div>
+                        <div>Jian Bo Shui Kueh</div>
+                        <div>Average Rating: 4.7/5</div>
                     </div>
                 </div>
             </div>
@@ -146,30 +196,35 @@
         <div id="hygiene" class="view">
             <div class="header">
                 <div class="header-icon">✓</div>
-                <h1>Hawker Center - Hygiene Grades</h1>
+                <h1>Chinatown Complex - Hygiene Grades</h1>
             </div>
 
             <div class="hygiene-detail">
-                <h3>Hygiene Information</h3>
-                <div class="grade">Please Select a Hawker Center</div>
-                <div class="remark">Choose a location from the dropdown menu at the top of the page to view detailed hygiene grades and inspection reports for all stalls.</div>
+                <h3>Overall Hawker Centre Grade: A</h3>
+                <div class="grade">Recent Inspection: January 2026</div>
+                <div class="remark">Chinatown Complex shows excellent hygiene standards with all stalls maintaining proper food safety protocols. One of the cleanest hawker centres in the area.</div>
                 
                 <div style="margin-top: 30px;">
-                    <h3 style="font-size: 18px; margin-bottom: 15px;">Available Locations</h3>
+                    <h3 style="font-size: 18px; margin-bottom: 15px;">Individual Stall Grades</h3>
                     
                     <div class="activity-box">
-                        <div class="title">Maxwell Food Centre</div>
-                        <div class="info">View hygiene grades for all stalls</div>
+                        <div class="title">Lian He Ben Ji Claypot Rice - Grade A</div>
+                        <div class="info">Exemplary hygiene practices and food handling</div>
                     </div>
 
                     <div class="activity-box">
-                        <div class="title">Chinatown Complex</div>
-                        <div class="info">View hygiene grades for all stalls</div>
+                        <div class="title">Outram Park Fried Kway Teow Mee - Grade A</div>
+                        <div class="info">Clean cooking area with proper ventilation</div>
                     </div>
 
                     <div class="activity-box">
-                        <div class="title">Lau Pa Sat</div>
-                        <div class="info">View hygiene grades for all stalls</div>
+                        <div class="title">Hong Kong Soya Sauce Chicken - Grade A</div>
+                        <div class="info">Excellent food storage and preparation standards</div>
+                    </div>
+
+                    <div class="activity-box">
+                        <div class="title">Jian Bo Shui Kueh - Grade A</div>
+                        <div class="info">Outstanding cleanliness and hygiene compliance</div>
                     </div>
                 </div>
             </div>
