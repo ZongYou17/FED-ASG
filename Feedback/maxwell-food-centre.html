@@ -59,7 +59,7 @@
                             <div>Rating : 5</div>
                             <div>Comment: Best chicken rice in the area! The rice is so fragrant.</div>
                         </div>
-                        <button class="add-review-btn" onclick="event.stopPropagation(); alert('Review feature coming soon!')">+ Add your review</button>
+                        <button class="add-review-btn" onclick="event.stopPropagation(); openAddReviewModal()">+ Add your review</button>
                     </div>
 
                     <div class="card card-clickable" style="margin-top: 20px;" onclick="navigateToView('hygiene')">
@@ -279,7 +279,188 @@
             if (cartCountSpan) {
                 cartCountSpan.textContent = totalItems;
             }
+            // Get hawker center name from page
+function getHawkerCenterName() {
+    const titleElement = document.querySelector('.header h1');
+    if (titleElement) {
+        return titleElement.textContent.split(' - ')[0];
+    }
+    return 'Unknown';
+}
+
+// Open Add Review Modal
+function openAddReviewModal() {
+    document.getElementById('addReviewModal').classList.add('active');
+}
+
+// Close Add Review Modal
+function closeAddReviewModal() {
+    document.getElementById('addReviewModal').classList.remove('active');
+    document.getElementById('reviewForm').reset();
+}
+
+// Handle form submission
+document.getElementById('reviewForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const reviewerName = document.getElementById('reviewerName').value;
+    const stallName = document.getElementById('stallName').value;
+    const rating = document.getElementById('rating').value;
+    const comment = document.getElementById('reviewComment').value;
+    
+    // Create review object
+    const review = {
+        id: Date.now(),
+        reviewerName: reviewerName,
+        stallName: stallName,
+        rating: rating,
+        comment: comment,
+        date: new Date().toLocaleDateString(),
+        hawkerCenter: getHawkerCenterName()
+    };
+    
+    // Save to localStorage
+    saveReview(review);
+    
+    // Add to display
+    addReviewToDisplay(review);
+    
+    // Close modal
+    closeAddReviewModal();
+    
+    // Show success message
+    alert('Review added successfully!');
+});
+
+// Save review to localStorage
+function saveReview(review) {
+    let reviews = JSON.parse(localStorage.getItem('hawkerReviews')) || [];
+    reviews.unshift(review); // Add to beginning of array
+    localStorage.setItem('hawkerReviews', JSON.stringify(reviews));
+}
+
+// Get reviews from localStorage
+function getReviews() {
+    const hawkerCenter = getHawkerCenterName();
+    let allReviews = JSON.parse(localStorage.getItem('hawkerReviews')) || [];
+    
+    // Filter by hawker center
+    return allReviews.filter(review => review.hawkerCenter === hawkerCenter);
+}
+
+// Add review to display
+function addReviewToDisplay(review) {
+    const reviewList = document.getElementById('review-list');
+    if (!reviewList) return;
+    
+    // Get initials for avatar
+    const initials = review.reviewerName
+        .split(' ')
+        .map(word => word[0])
+        .join('')
+        .toUpperCase()
+        .substring(0, 2);
+    
+    // Create review HTML
+    const reviewHTML = `
+        <div class="review-item" data-review-id="${review.id}">
+            <div class="review-avatar">${initials}</div>
+            <div class="review-content">
+                <div style="font-weight: 600;">${review.reviewerName}</div>
+                <div>${review.stallName}</div>
+                <div>Rating : ${review.rating}</div>
+                <div>Comment: ${review.comment}</div>
+                <div style="font-size: 12px; color: #999; margin-top: 5px;">${review.date}</div>
+            </div>
+            <button onclick="deleteReview(${review.id})" style="background: #ff6b6b; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; height: fit-content;">Delete</button>
+        </div>
+    `;
+    
+    // Add to top of list
+    reviewList.insertAdjacentHTML('afterbegin', reviewHTML);
+}
+
+// Delete review
+function deleteReview(reviewId) {
+    if (!confirm('Are you sure you want to delete this review?')) return;
+    
+    // Remove from localStorage
+    let reviews = JSON.parse(localStorage.getItem('hawkerReviews')) || [];
+    reviews = reviews.filter(review => review.id !== reviewId);
+    localStorage.setItem('hawkerReviews', JSON.stringify(reviews));
+    
+    // Remove from display
+    const reviewElement = document.querySelector(`[data-review-id="${reviewId}"]`);
+    if (reviewElement) {
+        reviewElement.remove();
+    }
+    
+    alert('Review deleted successfully!');
+}
+
+// Load reviews on page load
+function loadReviews() {
+    const reviews = getReviews();
+    reviews.forEach(review => {
+        addReviewToDisplay(review);
+    });
+}
+
+// Load reviews when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    loadReviews();
+});
+
+// Close modal when clicking outside
+document.getElementById('addReviewModal')?.addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeAddReviewModal();
+    }
+});
         }
     </script>
+    <div id="addReviewModal" class="modal">
+    <div class="modal-content review-popup">
+        <div class="modal-header">
+            <h2>Add Review</h2>
+            <button class="close-btn" onclick="closeAddReviewModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="reviewForm">
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Reviewer Name:</label>
+                    <input type="text" id="reviewerName" required style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 4px;">
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Stall Name:</label>
+                    <input type="text" id="stallName" required style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 4px;">
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Rating:</label>
+                    <select id="rating" required style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 4px;">
+                        <option value="">Select Rating</option>
+                        <option value="5">5 - Excellent</option>
+                        <option value="4">4 - Very Good</option>
+                        <option value="3">3 - Good</option>
+                        <option value="2">2 - Fair</option>
+                        <option value="1">1 - Poor</option>
+                    </select>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Comment:</label>
+                    <textarea id="reviewComment" required rows="4" style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 4px; resize: vertical;"></textarea>
+                </div>
+                
+                <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                    <button type="button" onclick="closeAddReviewModal()" style="padding: 10px 20px; background: white; border: 1px solid #d1d5db; border-radius: 4px; cursor: pointer;">Cancel</button>
+                    <button type="submit" style="padding: 10px 20px; background: #237023; color: white; border: none; border-radius: 4px; cursor: pointer;">Submit Review</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>
