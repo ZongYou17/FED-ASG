@@ -33,7 +33,9 @@ function showVendorLogin() {
 
 // Order history button functionality
 function showOrderHistory() {
-    alert('Order history feature coming soon!');
+    window.location.href = "../OrderHistory/OrderHistory.html";
+}
+ ;
     // Later you can replace this with:
     // window.location.href = 'order-history.html';
 }
