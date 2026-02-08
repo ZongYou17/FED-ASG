@@ -35,10 +35,10 @@ function showVendorLogin() {
 function showOrderHistory() {
     window.location.href = "../OrderHistory/OrderHistory.html";
 }
- ;
+ 
     // Later you can replace this with:
     // window.location.href = 'order-history.html';
-}
+
 // Feedback button functionality
 function feedback() {
     window.location.href = '../Feedback/feedback.html';
