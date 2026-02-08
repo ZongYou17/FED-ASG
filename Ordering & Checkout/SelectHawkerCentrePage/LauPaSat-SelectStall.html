@@ -1,0 +1,169 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxwell Food Centre - HawkerHub</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="Logo">
+            <button class="home-button" onclick="window.location.href='../../Main-Page/MainPage.html'">Hawker Hub</button>   
+            <button class="Normal-login">Login</button>
+            <button class="vendor-login">Vendor Login</button> 
+            <button class="Order-history">Order History</button>
+            <button class="Cart" onclick="viewCart()">Cart (<span id="cart-count">0</span>)</button>
+            <button class="Feedback"> Feedback </button>
+        </div>
+    </header>
+
+    <!-- Hawker Centre Header -->
+    <section class="LPS-hawker-header">
+        <div class="hawker-header-content">
+            <h1>Lau Pa Sat</h1>
+            <p class="location">📍 18 Raffles Quay, Singapore 048582</p>
+            <div class="hawker-stats">
+                <span class="stat">⭐ 4.4/5 Rating</span>
+                <span class="stat">🍽️ 80+ Stalls</span>
+                <span class="stat">🕐 12am - 12am (24hrs)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filter -->
+    <section class="filter-section">
+        <div class="filter-container">
+            <input type="text" id="searchBox" placeholder="Search for food or stall name..." class="search-bar">
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterStalls('all')">All</button>
+                <button class="filter-btn" onclick="filterStalls('chinese')">Chinese</button>
+                <button class="filter-btn" onclick="filterStalls('malay')">Malay</button>
+                <button class="filter-btn" onclick="filterStalls('indian')">Indian</button>
+                <button class="filter-btn" onclick="filterStalls('drinks')">Drinks & Desserts</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Food Stalls Grid -->
+    <section class="stalls-section">
+        <div class="stalls-grid">
+            <!-- Satay Street -->
+            <div class="stall-card" data-category="malay">
+                <img src="images/LauPaSat/SatayStreet.jpeg" alt="Satay Street" class="stall-image">
+                <div class="stall-info">
+                    <h3>Satay Street</h3>
+                    <p class="cuisine-type"> Malay • Satay</p>
+                    <p class="rating">⭐ 4.6/5 (1,890 reviews)</p>
+                    <p class="price-range">💰 $2.50 - $50.00</p>
+                    <button class="view-menu-btn" onclick="goToMenu('satay-street')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+
+            <!-- Thunder Tea Rice -->
+            <div class="stall-card" data-category="chinese">
+                <img src="Images/LauPaSat/ThunderTeaRice.jpeg" alt="Thunder Tea Rice" class="stall-image">
+                <div class="stall-info">
+                    <h3>Thunder Tea Rice</h3>
+                    <p class="cuisine-type"> Chinese • Tea Rice</p>
+                    <p class="rating">⭐ 4.3/5 (890 reviews)</p>
+                    <p class="price-range">💰 $5.00 - $9.00</p>
+                    <button class="view-menu-btn" onclick="goToMenu('thunder-tea-rice')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+
+            <!-- Butter & Cream -->
+            <div class="stall-card" data-category="drinks">
+                <img src="Images/LauPaSat/Butter&Cream.jpeg" alt="Butter & Cream" class="stall-image">
+                <div class="stall-info">
+                    <h3>Butter & Cream</h3>
+                    <p class="cuisine-type"> Desserts • Muffin & Tarts</p>
+                    <p class="rating">⭐ 4.4/5 (1,250 reviews)</p>
+                    <p class="price-range">💰 $2.50 - $3.50</p>
+                    <button class="view-menu-btn" onclick="goToMenu('butter-&-cream')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+
+            <!-- Golden Shoe Hokkien Mee -->
+            <div class="stall-card" data-category="chinese">
+                <img src="Images/LauPaSat/GoldenShoeHokkienMee.jpg" alt="Golden Shoe Hokkien Mee" class="stall-image">
+                <div class="stall-info">
+                    <h3>Golden Shoe Hokkien Mee</h3>
+                    <p class="cuisine-type"> Chinese • Noodles</p>
+                    <p class="rating">⭐ 4.6/5 (1,890 reviews)</p>
+                    <p class="price-range">💰 $7.00 - $10.00</p>
+                    <button class="view-menu-btn" onclick="goToMenu('golden-shoe-hokkien-mee')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+
+            <!-- Ipoh Hainanese Chicken Rice -->
+            <div class="stall-card" data-category="chinese">
+                <img src="Images/LauPaSat/Ipoh Hainanese Chicken Rice.jpeg" alt="Ipoh Hainanese Chicken Rice" class="stall-image">
+                <div class="stall-info">
+                    <h3>Ipoh Hainanese Chicken Rice</h3>
+                    <p class="cuisine-type"> Chinese • Chicken Rice</p>
+                    <p class="rating">⭐ 4.4/5 (1,020 reviews)</p>
+                    <p class="price-range">💰 $5.00 - $19.50</p>
+                    <button class="view-menu-btn" onclick="goToMenu('ipoh-hainanese-chicken-rice')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+
+            <!-- Swatow Bai Le Teochew Braised Duck -->
+            <div class="stall-card" data-category="chinese">
+                <img src="Images/LauPaSat/Swatow Bai Le Teochew Braised Duck.jpg" alt="Swatow Bai Le Teochew Braised Duck" class="stall-image">
+                <div class="stall-info">
+                    <h3>Swatow Bai Le Teochew Braised Duck</h3>
+                    <p class="cuisine-type"> Chinese • Braised Duck</p>
+                    <p class="rating">⭐ 4.5/5 (1,200 reviews)</p>
+                    <p class="price-range">💰 $5.00 - $12.00</p>
+                    <button class="view-menu-btn" onclick="goToMenu('swatow-bai-le-teochew-braised-duck')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+
+            <!-- Teh Tarik -->
+            <div class="stall-card" data-category="drinks">
+                <img src="Images/LauPaSat/Teh tarik.jpg" alt="Teh Tarik" class="stall-image">
+                <div class="stall-info">
+                    <h3>Teh Tarik</h3>
+                    <p class="cuisine-type"> Drinks • Teh Tarik</p>
+                    <p class="rating">⭐ 4.2/5 (560 reviews)</p>
+                    <p class="price-range">💰 $1.50 - $3.00</p>
+                    <button class="view-menu-btn" onclick="goToMenu('teh-tarik')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+
+            <!-- Partea Express -->
+            <div class="stall-card" data-category="drinks">
+                <img src="Images/LauPaSat/partea.jpg" alt="Partea Express" class="stall-image">
+                <div class="stall-info">
+                    <h3>Partea Express</h3>
+                    <p class="cuisine-type"> Drinks • Brewed Tea</p>
+                    <p class="rating">⭐ 4.3/5 (720 reviews)</p>
+                    <p class="price-range">💰 $2.00 - $4.00</p>
+                    <button class="view-menu-btn" onclick="goToMenu('partea-express')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+
+            <!-- Briyani Point Indian Food -->
+            <div class="stall-card" data-category="indian">
+                <img src="Images/LauPaSat/Briyani Point Indian Food.jpg" alt="Briyani Point Indian Food" class="stall-image">
+                <div class="stall-info">
+                    <h3>Briyani Point Indian Food</h3>
+                    <p class="cuisine-type"> Indian • Biriyani</p>
+                    <p class="rating">⭐ 4.6/5 (1,420 reviews)</p>
+                    <p class="price-range">💰 $5.00 - $12.00</p>
+                    <button class="view-menu-btn" onclick="goToMenu('briyani-point-indian-food')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>HawkerHub 2026</p>
+        <p>Terms and services</p>
+    </footer>
+
+    <script src="LauPaSat-SelectStall.js"></script>
+</body>

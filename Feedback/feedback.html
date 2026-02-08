@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hawker Center Review System</title>
+    <link rel="stylesheet" href="feedback.css">
+    <link rel="stylesheet" href="../Main-Page/MainPage.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="Logo">
+            <button class="home-button" onclick="goHome()"> Hawker Hub </button>   
+            <button class="Normal-login" onclick="showLogin()"> Login </button>
+            <button class="vendor-login" onclick="showVendorLogin()"> Vendor login </button> 
+            <button class="Order-history" onclick="showOrderHistory()"> Order History </button>
+            <button class="Cart" onclick="viewCart()"> Cart (<span id="cart-count">0</span>) </button>
+            <button class="Feedback" onclick="feedback()"> Feedback </button>
+        </div>
+    </header>
+    <div class="nav-tabs">
+        <button class="nav-btn active" data-view="main">Main View</button>
+        <button class="nav-btn" data-view="stall-review">Stall Reviews</button>
+        <button class="nav-btn" data-view="stall-recommendation">Recommendations</button>
+        <button class="nav-btn" data-view="hygiene">Hygiene</button>
+        <button class="nav-btn" data-view="review-dialog">Add Review</button>
+    </div>
+
+    <div class="container">
+        <!-- Main View -->
+        <div id="main" class="view active">
+            <div class="header">
+                <div class="header-icon">✓</div>
+                <div class="dropdown">
+                    <button class="dropdown-toggle" onclick="toggleDropdown('hawker-center-dropdown')" style="font-size: 24px; font-weight: 600; padding: 0;">
+                        <span id="selected-hawker-center">Hawker Center Name</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div id="hawker-center-dropdown" class="dropdown-menu">
+                        <div class="dropdown-item" onclick="selectHawkerCenter('Hawker Center Name')">Hawker Center Name</div>
+                        <div class="dropdown-item" onclick="selectHawkerCenter('Maxwell Food Centre')">Maxwell Food Centre</div>
+                        <div class="dropdown-item" onclick="selectHawkerCenter('Chinatown Complex')">Chinatown Complex</div>
+                        <div class="dropdown-item" onclick="selectHawkerCenter('Lau Pa Sat')">Lau Pa Sat</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <!-- Review Section -->
+                <div>
+                    <div class="card card-bordered card-clickable" onclick="navigateToView('stall-review')">
+                        <h2 class="section-title">Review</h2>
+                        <div class="review-pics">
+                            <div class="pic-circle">Pic</div>
+                            <div class="pic-square">Pic</div>
+                        </div>
+                        <div class="review-info">
+                            <div class="name">Name</div>
+                            <div>Stall Name</div>
+                            <div>Rating : 4</div>
+                            <div>Comment: ~~~</div>
+                        </div>
+                        <button class="add-review-btn" onclick="event.stopPropagation(); openModal('review-modal')">+ Add your review</button>
+                    </div>
+
+                    <div class="card card-clickable" style="margin-top: 20px;" onclick="navigateToView('hygiene')">
+                        <div style="margin-bottom: 15px; font-weight: 600;">Hygine Grade</div>
+                        <div class="hygiene-section">
+                            <div class="stall-badge">Stall</div>
+                            <div style="font-size: 14px;">
+                                <div>Stall Name</div>
+                                <div>Hygine Grade: B</div>
+                                <div>Remark: ~~~</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendation Section -->
+                <div class="card card-clickable" onclick="navigateToView('stall-recommendation')">
+                    <h2 class="section-title">Recommendation</h2>
+                    <div class="food-placeholder">Food</div>
+                    <div class="recommendation-text">
+                        <div>This is the most popular item this week</div>
+                        <div>
+                            <div>Today have been relatively easy.</div>
+                            <div>Usual Peak Hour : Now Is 1:30pm</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stall Review View -->
+        <div id="stall-review" class="view">
+            <div class="header">
+                <div class="header-icon">✓</div>
+                <div class="dropdown">
+                    <button class="dropdown-toggle" onclick="toggleDropdown('hawker-center-dropdown-2')" style="font-size: 24px; font-weight: 600; padding: 0;">
+                        <span id="selected-hawker-center-2">Hawker Center Name</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div id="hawker-center-dropdown-2" class="dropdown-menu">
+                        <div class="dropdown-item" onclick="selectHawkerCenter2('Hawker Center Name')">Hawker Center Name</div>
+                        <div class="dropdown-item" onclick="selectHawkerCenter2('Maxwell Food Centre')">Maxwell Food Centre</div>
+                        <div class="dropdown-item" onclick="selectHawkerCenter2('Chinatown Complex')">Chinatown Complex</div>
+                        <div class="dropdown-item" onclick="selectHawkerCenter2('Lau Pa Sat')">Lau Pa Sat</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="review-list-header">
+                    <div class="header-left">
+                        <h2 class="section-title" style="margin: 0;">Stall</h2>
+                        <div class="dropdown">
+                            <button class="dropdown-toggle" onclick="toggleDropdown('stall-dropdown')">
+                                <span id="selected-stall">All Stalls</span>
+                                <span class="dropdown-arrow">▼</span>
+                            </button>
+                            <div id="stall-dropdown" class="dropdown-menu">
+                                <div class="dropdown-item" onclick="selectStall('All Stalls')">All Stalls</div>
+                                <div class="dropdown-item" onclick="selectStall('Stall A')">Stall A</div>
+                                <div class="dropdown-item" onclick="selectStall('Stall B')">Stall B</div>
+                                <div class="dropdown-item" onclick="selectStall('Stall C')">Stall C</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-right">
+                        <h2 class="section-title" style="margin: 0;">Sort By:</h2>
+                        <div class="dropdown">
+                            <button class="dropdown-toggle" onclick="toggleDropdown('sort-dropdown')">
+                                <span id="selected-sort">Rating</span>
+                                <span class="dropdown-arrow">▼</span>
+                            </button>
+                            <div id="sort-dropdown" class="dropdown-menu">
+                                <div class="dropdown-item" onclick="selectSort('Rating')">Rating</div>
+                                <div class="dropdown-item" onclick="selectSort('Stall Name: A to Z')">Stall Name: A to Z</div>
+                                <div class="dropdown-item" onclick="selectSort('Stall Name: Z to A')">Stall Name: Z to A</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 20px;">Review</h3>
+
+                <div id="review-list">
+                    <div class="review-item card-clickable" onclick="showReviewDetail('Name', 'Stall Name', '4', '~~~')">
+                        <div class="review-avatar">Pic</div>
+                        <div class="review-content">
+                            <div style="font-weight: 600;">Name</div>
+                            <div>Stall Name</div>
+                            <div>Rating : 4</div>
+                            <div>Comment: ~~~</div>
+                        </div>
+                    </div>
+
+                    <div class="review-item card-clickable" onclick="showReviewDetail('Name', 'Stall Name', '4', '~~~')">
+                        <div class="review-avatar">Pic</div>
+                        <div class="review-content">
+                            <div style="font-weight: 600;">Name</div>
+                            <div>Stall Name</div>
+                            <div>Rating : 4</div>
+                            <div>Comment: ~~~</div>
+                        </div>
+                    </div>
+
+                    <div class="review-item card-clickable" onclick="showReviewDetail('Name', 'Stall Name', '3', '~~~')">
+                        <div class="review-avatar">Pic</div>
+                        <div class="review-content">
+                            <div style="font-weight: 600;">Name</div>
+                            <div>Stall Name</div>
+                            <div>Rating : 3</div>
+                            <div>Comment: ~~~</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pagination">
+                    <button class="page-btn"></button>
+                    <button class="page-btn"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stall Recommendation View -->
+        <div id="stall-recommendation" class="view">
+            <div class="header">
+                <div class="header-icon">✓</div>
+                <div class="dropdown">
+                    <button class="dropdown-toggle" onclick="toggleDropdown('hawker-center-dropdown-3')" style="font-size: 24px; font-weight: 600; padding: 0;">
+                        <span id="selected-hawker-center-3">Hawker Center Name</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div id="hawker-center-dropdown-3" class="dropdown-menu">
+                        <div class="dropdown-item" onclick="selectHawkerCenter3('Hawker Center Name')">Hawker Center Name</div>
+                        <div class="dropdown-item" onclick="selectHawkerCenter3('Maxwell Food Centre')">Maxwell Food Centre</div>
+                        <div class="dropdown-item" onclick="selectHawkerCenter3('Chinatown Complex')">Chinatown Complex</div>
+                        <div class="dropdown-item" onclick="selectHawkerCenter3('Lau Pa Sat')">Lau Pa Sat</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 25px;">
+                    <h2 class="section-title" style="margin: 0;">Stall</h2>
+                    <div class="dropdown">
+                        <button class="dropdown-toggle" onclick="toggleDropdown('rec-stall-dropdown')">
+                            <span id="rec-selected-stall">All Stalls</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div id="rec-stall-dropdown" class="dropdown-menu">
+                            <div class="dropdown-item" onclick="selectRecStall('All Stalls')">All Stalls</div>
+                            <div class="dropdown-item" onclick="selectRecStall('Stall A')">Stall A</div>
+                            <div class="dropdown-item" onclick="selectRecStall('Stall B')">Stall B</div>
+                            <div class="dropdown-item" onclick="selectRecStall('Stall C')">Stall C</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <!-- Recommendation -->
+                    <div>
+                        <h3 style="font-weight: 600; margin-bottom: 15px;">Recommendation</h3>
+                        <div class="recommendation-header">
+                            <span>Popular:</span>
+                            <div class="dropdown">
+                                <button class="dropdown-toggle" onclick="toggleDropdown('popular-dropdown')">
+                                    <span id="selected-popular">Today</span>
+                                    <span class="dropdown-arrow">▼</span>
+                                </button>
+                                <div id="popular-dropdown" class="dropdown-menu">
+                                    <div class="dropdown-item" onclick="selectPopular('Today')">Today</div>
+                                    <div class="dropdown-item" onclick="selectPopular('This Week')">This Week</div>
+                                    <div class="dropdown-item" onclick="selectPopular('This Month')">This Month</div>
+                                    <div class="dropdown-item" onclick="selectPopular('All Time')">All Time</div>
+                                </div>
+                            </div>
+                            <span>Sort By:</span>
+                            <div class="dropdown">
+                                <button class="dropdown-toggle" onclick="toggleDropdown('order-dropdown')">
+                                    <span id="selected-order">Order</span>
+                                    <span class="dropdown-arrow">▼</span>
+                                </button>
+                                <div id="order-dropdown" class="dropdown-menu">
+                                    <div class="dropdown-item" onclick="selectOrder('Order')">Order</div>
+                                    <div class="dropdown-item" onclick="selectOrder('Rating')">Rating</div>
+                                    <div class="dropdown-item" onclick="selectOrder('Name')">Name</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="food-item">
+                            <div class="food-pic">Food</div>
+                            <div class="food-info">
+                                <div style="font-weight: 600;">Food Name</div>
+                                <div>Total Ordered: 16</div>
+                                <div>Rating: 4stars</div>
+                            </div>
+                        </div>
+
+                        <div class="food-item">
+                            <div class="food-pic">Food</div>
+                            <div class="food-info">
+                                <div style="font-weight: 600;">Food Name</div>
+                                <div>Total Ordered: 16</div>
+                                <div>Rating: 4stars</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Activity -->
+                    <div>
+                        <h3 style="font-weight: 600; margin-bottom: 15px;">Activity</h3>
+
+                        <div class="activity-box">
+                            <div class="title">Peak Hour</div>
+                            <div class="info">Normal Peak Hour: 12pm to 1:30 pm</div>
+                        </div>
+
+                        <div class="activity-box">
+                            <div class="title">Bar Chart</div>
+                            <div class="info" style="margin-bottom: 8px;">Activity Status This Week</div>
+                            <div class="info">Current Status: Not busy</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hygiene View -->
+        <div id="hygiene" class="view">
+            <div class="header">
+                <div class="header-icon">✓</div>
+                <div class="dropdown">
+                    <button class="dropdown-toggle" onclick="toggleDropdown('hawker-center-dropdown-4')" style="font-size: 24px; font-weight: 600; padding: 0;">
+                        <span id="selected-hawker-center-4">Hawker Center Name</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div id="hawker-center-dropdown-4" class="dropdown-menu">
+                        <div class="dropdown-item" onclick="selectHawkerCenter4('Hawker Center Name')">Hawker Center Name</div>
+                        <div class="dropdown-item" onclick="selectHawkerCenter4('Maxwell Food Centre')">Maxwell Food Centre</div>
+                        <div class="dropdown-item" onclick="selectHawkerCenter4('Chinatown Complex')">Chinatown Complex</div>
+                        <div class="dropdown-item" onclick="selectHawkerCenter4('Lau Pa Sat')">Lau Pa Sat</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 25px;">
+                    <h2 class="section-title" style="margin: 0;">Stall</h2>
+                    <div class="checkbox"></div>
+                </div>
+
+                <div class="hygiene-detail">
+                    <h3>Hygine</h3>
+                    <div class="grade">Grade: 4 and half stars</div>
+                    <div class="remark"><span style="font-weight: 600;">Inspector's remark:</span> ~~~</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Review Detail Popup Modal -->
+    <div id="review-list-modal" class="modal">
+        <div class="modal-content review-popup">
+            <div class="modal-header">
+                <span>Review Detail</span>
+                <button class="close-btn" onclick="closeModal('review-list-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="review-item" style="border-bottom: none; padding-bottom: 0;">
+                    <div class="review-avatar" style="width: 80px; height: 80px; font-size: 16px;">Pic</div>
+                    <div class="review-content" style="font-size: 16px;">
+                        <div style="font-weight: 600; font-size: 18px; margin-bottom: 8px;" id="detail-name">Name</div>
+                        <div style="margin-bottom: 5px;" id="detail-stall">Stall Name</div>
+                        <div style="margin-bottom: 5px;" id="detail-rating">Rating : 4</div>
+                        <div style="margin-bottom: 5px;">Comment:</div>
+                        <div style="padding: 10px; background: #f9fafb; border-radius: 4px; margin-top: 5px;" id="detail-comment">~~~</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Review Dialog Modal -->
+    <div id="review-modal" class="modal">
+        <div class="modal-content dialog-content">
+            <div class="modal-header">
+                <span>Review</span>
+                <button class="close-btn" onclick="closeModal('review-modal')">&times;</button>
+            </div>
+            <div class="dialog-body">
+                <div class="dialog-field">
+                    <span>Choose Stall:</span>
+                    <div class="dropdown">
+                        <button class="dropdown-toggle" onclick="toggleDropdown('review-stall-dropdown')">
+                            <span id="review-selected-stall">Stall A</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div id="review-stall-dropdown" class="dropdown-menu">
+                            <div class="dropdown-item" onclick="selectReviewStall('Stall A')">Stall A</div>
+                            <div class="dropdown-item" onclick="selectReviewStall('Stall B')">Stall B</div>
+                            <div class="dropdown-item" onclick="selectReviewStall('Stall C')">Stall C</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dialog-field">
+                    <span>Rating:</span>
+                    <div class="dropdown">
+                        <button class="dropdown-toggle" onclick="toggleDropdown('review-rating-dropdown')">
+                            <span id="review-selected-rating">4 stars</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div id="review-rating-dropdown" class="dropdown-menu">
+                            <div class="dropdown-item" onclick="selectReviewRating('1 star')">1 star</div>
+                            <div class="dropdown-item" onclick="selectReviewRating('2 stars')">2 stars</div>
+                            <div class="dropdown-item" onclick="selectReviewRating('3 stars')">3 stars</div>
+                            <div class="dropdown-item" onclick="selectReviewRating('4 stars')">4 stars</div>
+                            <div class="dropdown-item" onclick="selectReviewRating('5 stars')">5 stars</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 500;">Description:</label>
+                    <textarea 
+                        id="review-description" 
+                        placeholder="Enter your review description here..."
+                        style="width: 100%; min-height: 100px; padding: 10px; border: 1px solid #d1d5db; border-radius: 4px; font-family: Arial, sans-serif; font-size: 14px; resize: vertical;"
+                    ></textarea>
+                </div>
+
+                <div class="dialog-buttons">
+                    <button class="btn-cancel" onclick="closeModal('review-modal')">Cancel</button>
+                    <button class="btn-ok" onclick="submitReview()">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation
+        const navButtons = document.querySelectorAll('.nav-btn');
+        const views = document.querySelectorAll('.view');
+
+        navButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const viewName = button.getAttribute('data-view');
+
+                // Handle modal views
+                if (viewName === 'review-dialog') {
+                    openModal('review-modal');
+                    return;
+                }
+
+                // Switch views
+                navigateToView(viewName);
+            });
+        });
+
+        // Function to navigate to a specific view
+        function navigateToView(viewName) {
+            navButtons.forEach(btn => btn.classList.remove('active'));
+            const targetBtn = document.querySelector(`[data-view="${viewName}"]`);
+            if (targetBtn) {
+                targetBtn.classList.add('active');
+            }
+
+            views.forEach(view => view.classList.remove('active'));
+            const targetView = document.getElementById(viewName);
+            if (targetView) {
+                targetView.classList.add('active');
+            }
+        }
+
+        // Dropdown functionality
+        function toggleDropdown(dropdownId) {
+            event.stopPropagation();
+            const dropdown = document.getElementById(dropdownId);
+            
+            // Close all other dropdowns
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                if (menu.id !== dropdownId) {
+                    menu.classList.remove('active');
+                }
+            });
+            
+            dropdown.classList.toggle('active');
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                menu.classList.remove('active');
+            });
+        });
+
+        // Stall selection functions
+        function selectStall(stall) {
+            document.getElementById('selected-stall').textContent = stall;
+            document.getElementById('stall-dropdown').classList.remove('active');
+        }
+
+        function selectRecStall(stall) {
+            document.getElementById('rec-selected-stall').textContent = stall;
+            document.getElementById('rec-stall-dropdown').classList.remove('active');
+        }
+
+        // Sort selection function
+        function selectSort(sortOption) {
+            document.getElementById('selected-sort').textContent = sortOption;
+            document.getElementById('sort-dropdown').classList.remove('active');
+        }
+
+        // Popular selection function
+        function selectPopular(option) {
+            document.getElementById('selected-popular').textContent = option;
+            document.getElementById('popular-dropdown').classList.remove('active');
+        }
+
+        // Order selection function
+        function selectOrder(option) {
+            document.getElementById('selected-order').textContent = option;
+            document.getElementById('order-dropdown').classList.remove('active');
+        }
+
+        // Hawker Center selection function
+        function selectHawkerCenter(center) {
+            document.getElementById('selected-hawker-center').textContent = center;
+            document.getElementById('hawker-center-dropdown').classList.remove('active');
+        }
+
+        function selectHawkerCenter2(center) {
+            document.getElementById('selected-hawker-center-2').textContent = center;
+            document.getElementById('hawker-center-dropdown-2').classList.remove('active');
+        }
+
+        function selectHawkerCenter3(center) {
+            document.getElementById('selected-hawker-center-3').textContent = center;
+            document.getElementById('hawker-center-dropdown-3').classList.remove('active');
+        }
+
+        function selectHawkerCenter4(center) {
+            document.getElementById('selected-hawker-center-4').textContent = center;
+            document.getElementById('hawker-center-dropdown-4').classList.remove('active');
+        }
+
+        // Modal review list dropdown functions
+        function selectModalStall(stall) {
+            document.getElementById('modal-selected-stall').textContent = stall;
+            document.getElementById('modal-stall-dropdown').classList.remove('active');
+        }
+
+        function selectModalSort(sortOption) {
+            document.getElementById('modal-selected-sort').textContent = sortOption;
+            document.getElementById('modal-sort-dropdown').classList.remove('active');
+        }
+
+        // Show individual review detail in popup
+        function showReviewDetail(name, stallName, rating, comment) {
+            document.getElementById('detail-name').textContent = name;
+            document.getElementById('detail-stall').textContent = stallName;
+            document.getElementById('detail-rating').textContent = 'Rating : ' + rating;
+            document.getElementById('detail-comment').textContent = comment;
+            openModal('review-list-modal');
+        }
+
+        // Review dialog dropdown functions
+        function selectReviewStall(stall) {
+            document.getElementById('review-selected-stall').textContent = stall;
+            document.getElementById('review-stall-dropdown').classList.remove('active');
+        }
+
+        function selectReviewRating(rating) {
+            document.getElementById('review-selected-rating').textContent = rating;
+            document.getElementById('review-rating-dropdown').classList.remove('active');
+        }
+
+        // Submit review function
+        function submitReview() {
+            const stall = document.getElementById('review-selected-stall').textContent;
+            const rating = document.getElementById('review-selected-rating').textContent;
+            const description = document.getElementById('review-description').value;
+            
+            // Validate description
+            if (!description.trim()) {
+                alert('Please enter a description for your review.');
+                return;
+            }
+            
+            // Extract just the number from rating (e.g., "4 stars" -> "4")
+            const ratingNumber = rating.split(' ')[0];
+            
+            // Create new review element
+            const reviewList = document.getElementById('review-list');
+            const newReview = document.createElement('div');
+            newReview.className = 'review-item card-clickable';
+            newReview.onclick = function() {
+                showReviewDetail('You', stall, ratingNumber, description);
+            };
+            
+            newReview.innerHTML = `
+                <div class="review-avatar">Pic</div>
+                <div class="review-content">
+                    <div style="font-weight: 600;">You</div>
+                    <div>${stall}</div>
+                    <div>Rating : ${ratingNumber}</div>
+                    <div>Comment: ${description.substring(0, 50)}${description.length > 50 ? '...' : ''}</div>
+                </div>
+            `;
+            
+            // Add to the top of the list
+            reviewList.insertBefore(newReview, reviewList.firstChild);
+            
+            // Clear the form
+            document.getElementById('review-description').value = '';
+            
+            // Close the modal
+            closeModal('review-modal');
+            
+            // Navigate to stall review page to show the new review
+            navigateToView('stall-review');
+            
+            // Show a success message
+            setTimeout(() => {
+                alert('Review submitted successfully!');
+            }, 100);
+        }
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // Close modals when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                e.target.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

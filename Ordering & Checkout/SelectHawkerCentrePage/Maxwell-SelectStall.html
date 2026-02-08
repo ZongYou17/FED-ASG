@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxwell Food Centre - HawkerHub</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="Logo">
+            <button class="home-button" onclick="window.location.href='../../Main-Page/MainPage.html'">Hawker Hub</button>   
+            <button class="Normal-login">Login</button>
+            <button class="vendor-login">Vendor Login</button> 
+            <button class="Order-history">Order History</button>
+            <button class="Cart" onclick="viewCart()"> Cart (<span id="cart-count">0</span>) </button>
+            <button class="Feedback"> Feedback </button>
+        </div>
+    </header>
+
+    <!-- Hawker Centre Header -->
+    <section class="hawker-header">
+        <img src="maxwell.jpg" alt="Maxwell Food Centre" class="stall-image">
+        <div class="hawker-header-content">
+            <h1>Maxwell Food Centre</h1>
+            <p class="location">📍 1 Kadayanallur Street, Singapore 069184</p>
+            <div class="hawker-stats">
+                <span class="stat">⭐ 4.5/5 Rating</span>
+                <span class="stat">🍽️ 50+ Stalls</span>
+                <span class="stat">🕐 6:00 AM - 11:00 PM</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filter -->
+    <section class="filter-section">
+        <div class="filter-container">
+            <input type="text" id="searchBox" placeholder="Search for food or stall name..." class="search-bar">
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterStalls('all')">All</button>
+                <button class="filter-btn" onclick="filterStalls('chinese')">Chinese</button>
+                <button class="filter-btn" onclick="filterStalls('malay')">Malay</button>
+                <button class="filter-btn" onclick="filterStalls('indian')">Indian</button>
+                <button class="filter-btn" onclick="filterStalls('drinks')">Drinks & Desserts</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Food Stalls Grid -->
+    <section class="stalls-section">
+        <div class="stalls-grid">
+            <!-- TianTian chicken rice -->
+            <div class="stall-card" data-category="chinese" onclick="goToMenu('Tian-Tian-Chicken-Rice')">
+                <img src="images/maxwell/TianTianStall.jpg" alt="Tian Tian Chicken Rice" class="stall-image">
+                <div class="stall-info">
+                    <h3>Tian Tian Chicken Rice</h3>
+                    <p class="cuisine-type"> Chinese • Chicken Rice</p>
+                    <p class="rating">⭐ 4.7/5 (2,450 reviews)</p>
+                    <p class="price-range">💰 $3.50 - $6.00</p>
+                    <button class="view-menu-btn" onclick="goToMenu('tian-tian')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+
+            <!-- Stall 2 -->
+            <div class="stall-card" data-category="chinese" onclick="goToMenu('China Street Fritters')">
+                <img src="Images/maxwell/china-street-fritters.jpg" alt="China Street Fritters" class="stall-image">
+                <div class="stall-info">
+                    <h3>China Street Fritters</h3>
+                    <p class="cuisine-type"> Chinese • Noodles</p>
+                    <p class="rating">⭐ 4.3/5 (890 reviews)</p>
+                    <p class="price-range">💰 $1.50 - $3.00</p>
+                    <button class="view-menu-btn" onclick="goToMenu('china-street')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+
+            <!-- Stall 3 -->
+            <div class="stall-card" data-category="chinese" onclick="goToMenu('Zhen Zhen Porridge')">
+                <img src="Images/maxwell/ZhenZhenPorridge.jpg" alt="Zhen Zhen Porridge" class="stall-image">
+                <div class="stall-info">
+                    <h3>Zhen Zhen Porridge</h3>
+                    <p class="cuisine-type"> Chinese • Porridge</p>
+                    <p class="rating">⭐ 4.4/5 (1,250 reviews)</p>
+                    <p class="price-range">💰 $3.50 - $10.00</p>
+                    <button class="view-menu-btn" onclick="goToMenu('zhen-zhen')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+
+            <!-- Stall 4 -->
+            <div class="stall-card" data-category="chinese">
+                <img src="Images/maxwell/FriedKwayTeow.jpg" alt="Char Kway Teow" class="stall-image">
+                <div class="stall-info">
+                    <h3>Fried Kway Teow</h3>
+                    <p class="cuisine-type"> Chinese • Noodles</p>
+                    <p class="rating">⭐ 4.6/5 (1,890 reviews)</p>
+                    <p class="price-range">💰 $4.00 - $7.00</p>
+                    <button class="view-menu-btn" onclick="goToMenu('ckt')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+
+            <!-- Stall 5 -->
+            <div class="stall-card" data-category="malay">
+                <img src="Images/maxwell/Selera-Rasa-Nasi-Lemak.jpg" alt="Nasi Lemak" class="stall-image">
+                <div class="stall-info">
+                    <h3>Selera Rasa Nasi Lemak</h3>
+                    <p class="cuisine-type"> Malay • Nasi Lemak</p>
+                    <p class="rating">⭐ 4.5/5 (1,120 reviews)</p>
+                    <p class="price-range">💰 $3.50 - $6.50</p>
+                    <button class="view-menu-btn" onclick="goToMenu('nasi-lemak')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+
+            <!-- Stall 6 -->
+            <div class="stall-card" data-category="indian">
+                <img src="Images/maxwell/PrataHouse.jpg" alt="Roti Prata" class="stall-image">
+                <div class="stall-info">
+                    <h3>Maxwell Indian Muslim Food</h3>
+                    <p class="cuisine-type"> Indian • Roti Prata</p>
+                    <p class="rating">⭐ 4.4/5 (980 reviews)</p>
+                    <p class="price-range">💰 $1.50 - $5.00</p>
+                    <button class="view-menu-btn" onclick="goToMenu('prata')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+
+            <!-- Stall 7 -->
+            <div class="stall-card" data-category="drinks">
+                <img src="Images/maxwell/sugarcane.jpg" alt="Drinks" class="stall-image">
+                <div class="stall-info">
+                    <h3>Fresh Sugar Cane Juice</h3>
+                    <p class="cuisine-type"> Drinks • Fresh Juices</p>
+                    <p class="rating">⭐ 4.2/5 (560 reviews)</p>
+                    <p class="price-range">💰 $1.50 - $3.00</p>
+                    <button class="view-menu-btn" onclick="goToMenu('drinks')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+
+            <!-- Stall 8 -->
+            <div class="stall-card" data-category="drinks">
+                <img src="Images/maxwell/Hot & Cold Desserts.jpg" alt="Desserts" class="stall-image">
+                <div class="stall-info">
+                    <h3>Hot and Cold Desserts</h3>
+                    <p class="cuisine-type"> Desserts • Ice Kacang</p>
+                    <p class="rating">⭐ 4.3/5 (720 reviews)</p>
+                    <p class="price-range">💰 $2.00 - $4.00</p>
+                    <button class="view-menu-btn" onclick="goToMenu('ice-kacang')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+
+            <!-- Stall 9 -->
+            <div class="stall-card" data-category="chinese">
+                <img src="Images/maxwell/Roasted delights.jpg" alt="Roast Meat" class="stall-image">
+                <div class="stall-info">
+                    <h3>Roasted Delights</h3>
+                    <p class="cuisine-type"> Chinese • Roast Meat</p>
+                    <p class="rating">⭐ 4.5/5 (1,340 reviews)</p>
+                    <p class="price-range">💰 $4.50 - $8.00</p>
+                    <button class="view-menu-btn" onclick="goToMenu('roast-meat')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>HawkerHub 2026</p>
+        <p>Terms and services</p>
+    </footer>
+
+    <script src="Maxwell-SelectStall.js"></script>
+</body>

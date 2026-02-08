@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - HawkerHub</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+    .menu-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 25px !important;
+    }
+</style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="Logo">
+            <button class="home-button" onclick="window.location.href='../../Main-Page/MainPage.html'">Hawker Hub</button>   
+            <button class="Normal-login">Login</button>
+            <button class="vendor-login">Vendor Login</button> 
+            <button class="Order-history">Order History</button>
+            <button class="Cart" onclick="showCart()"> Cart (<span id="cart-count">0</span>) </button>
+            <button class="Feedback"> Feedback </button>
+        </div>
+    </header>
+
+    <!-- Stall Header -->
+    <section class="stall-header">
+        <div class="stall-header-content">
+            <button class="back-button" onclick="goBack()">← Back to Stalls</button>
+            <h1 id="stall-name">China Street Fritters</h1>
+            <p id="stall-address" class="address">1 Kadayanallur Street, Singapore 069184</p>
+            <div class="opening-hours">
+                <p><strong>Opening Hours</strong></p>
+                <p id="weekday-hours">Weekday: 11:00am - 8:00pm</p>
+                <p id="weekend-hours">Weekend: 10:00am - 8:00pm</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Items Grid -->
+    <section class="menu-section">
+        <h2>Menu Items</h2>
+        <div class="menu-grid" id="menu-grid">
+            
+            <!-- Bee hoon (S) -->
+            <div class="menu-item">
+                <div class="menu-item-image">
+                    <img src="images/ChinaStreetFritters/beehoon.jpg" alt="Bee Hoon (S)" class="menu-item-image">
+                    <div class="menu-item-info">
+                        <h3>Bee Hoon (S)</h3>
+                        <p class="menu-item-description">Fried vermicelli noodles cooked with soy sauce</p>
+                        <p class="menu-item-price">$1.20</p>
+                        <div class="add-to-cart-section">
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="decreaseQuantity('csf-001')">-</button>
+                                <span class="quantity-display" id="qty-csf-001">1</span>
+                                <button class="quantity-btn" onclick="increaseQuantity('csf-001')">+</button>
+                            </div>
+                            <button class="add-to-cart-btn" onclick="addToCart('csf-001', 'Bee Hoon (S)', 1.20)">
+                            🛒 Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bee hoon (L) -->
+            <div class="menu-item">
+                <img src="images/ChinaStreetFritters/BeeHoon.jpg" alt="Bee Hoon (L)" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Bee Hoon (L)</h3>
+                    <p class="menu-item-description">Fried vermicelli noodles cooked with soy sauce</p>
+                    <p class="menu-item-price">$1.50</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('csf-002')">-</button>
+                            <span class="quantity-display" id="qty-csf-002">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('csf-002')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('csf-002', 'Bee Hoon (L)', 1.50)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fried Egg -->
+            <div class="menu-item">
+                <img src="images/ChinaStreetFritters/egg.jpg" alt="Fried Egg" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Fried Egg</h3>
+                    <p class="menu-item-description">Crispy fried egg slice</p>
+                    <p class="menu-item-price">$1.20</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('csf-003')">-</button>
+                            <span class="quantity-display" id="qty-csf-003">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('csf-003')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('csf-003', 'Fried Egg', 1.20)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bean Curd -->
+            <div class="menu-item">
+                <img src="images/ChinaStreetFritters/beanCurd.jpg" alt="Bean Curd" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Bean Curd</h3>
+                    <p class="menu-item-description">Deep fried bean curd</p>
+                    <p class="menu-item-price">$1.00</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('csf-004')">-</button>
+                            <span class="quantity-display" id="qty-csf-004">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('csf-004')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('csf-004', 'Bean Curd', 1.00)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fishball -->
+            <div class="menu-item">
+                <img src="images/ChinaStreetFritters/fishball.jpg" alt="Fishball" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Fishball</h3>
+                    <p class="menu-item-description">Deep fried fishball</p>
+                    <p class="menu-item-price">$0.50</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('csf-005')">-</button>
+                            <span class="quantity-display" id="qty-csf-005">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('csf-005')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('csf-005', 'Fishball', 0.50)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sausage -->
+            <div class="menu-item">
+                <img src="images/ChinaStreetFritters/Sausage.jpg" alt="Sausage" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Sausage</h3>
+                    <p class="menu-item-description">Deep fried sausage</p>
+                    <p class="menu-item-price">$3.00</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('csf-006')">-</button>
+                            <span class="quantity-display" id="qty-csf-006">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('csf-006')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('csf-006', 'Sausage', 3.00)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Meat Roll (Ngoh Hiang) -->
+            <div class="menu-item">
+                <img src="images/ChinaStreetFritters/ngoh hiang.jpg" alt="Meat Roll (Ngoh Hiang)" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Meat Roll (Ngoh Hiang)</h3>
+                    <p class="menu-item-description">Five-spice meat roll</p>
+                    <p class="menu-item-price">$1.20</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('csf-007')">-</button>
+                            <span class="quantity-display" id="qty-csf-007">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('csf-007')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('csf-007', 'Meat Roll (Ngoh Hiang)', 1.20)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Liver Roll -->
+            <div class="menu-item">
+                <img src="images/ChinaStreetFritters/liver roll.jpg" alt="Liver Roll" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Liver Roll</h3>
+                    <p class="menu-item-description">Deep fried liver roll</p>
+                    <p class="menu-item-price">$1.20</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('csf-008')">-</button>
+                            <span class="quantity-display" id="qty-csf-008">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('csf-008')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('csf-008', 'Liver Roll', 1.20)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>HawkerHub 2026</p>
+        <p>Terms and services</p>
+    </footer>
+
+    <!-- Add to Cart Notification -->
+    <div id="cart-notification" class="cart-notification">
+        <p>✓ Item added to cart!</p>
+    </div>
+
+    <script src="ChinaStreetFrotters.js"></script>
+</body>
+</html>

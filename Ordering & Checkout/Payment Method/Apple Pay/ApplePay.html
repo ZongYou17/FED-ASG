@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple Pay - Payment</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="payment-card">
+            <button class="back-btn" onclick="window.location.href='../PaymentMethod.html'">
+                ← Back
+            </button>
+            
+            <h1 class="title">Apple Pay</h1>
+            <p class="subtitle">Complete your payment with Apple Pay</p>
+            
+            <form id="applePayForm" class="payment-form">
+                <div class="apple-pay-info">
+                    <div class="apple-pay-icon">
+                        <span style="font-size: 48px;">📱</span>
+                    </div>
+                    <p class="info-text">Touch ID or Face ID will be required to complete this payment</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+65 1234 5678" required>
+                </div>
+
+                <div class="order-summary">
+                    <h3>Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery Fee</span>
+                        <span id="deliveryFee">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Service Fee</span>
+                        <span id="serviceFee">$0.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="totalAmount">$0.00</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="confirm-btn">
+                    Pay with Apple Pay
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="ApplePay.js"></script>
+</body>
+</html>

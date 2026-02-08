@@ -1,0 +1,169 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxwell Food Centre - HawkerHub</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="Logo">
+            <button class="home-button" onclick="window.location.href='../../Main-Page/MainPage.html'">Hawker Hub</button>   
+            <button class="Normal-login">Login</button>
+            <button class="vendor-login">Vendor Login</button> 
+            <button class="Order-history">Order History</button>
+            <button class="Cart" onclick="viewCart()">Cart (<span id="cart-count">0</span>)</button>
+            <button class="Feedback"> Feedback </button>
+        </div>
+    </header>
+
+    <!-- Hawker Centre Header -->
+    <section class="CTC-hawker-header">
+        <div class="hawker-header-content">
+            <h1>Chinatown Complex</h1>
+            <p class="location">📍 335 Smith Street, Singapore 050335</p>
+            <div class="hawker-stats">
+                <span class="stat">⭐ 4.4/5 Rating</span>
+                <span class="stat">🍽️ 260+ Stalls</span>
+                <span class="stat">🕐 7am - 10pm</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filter -->
+    <section class="filter-section">
+        <div class="filter-container">
+            <input type="text" id="searchBox" placeholder="Search for food or stall name..." class="search-bar">
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterStalls('all')">All</button>
+                <button class="filter-btn" onclick="filterStalls('chinese')">Chinese</button>
+                <button class="filter-btn" onclick="filterStalls('malay')">Malay</button>
+                <button class="filter-btn" onclick="filterStalls('indian')">Indian</button>
+                <button class="filter-btn" onclick="filterStalls('drinks')">Drinks & Desserts</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Food Stalls Grid -->
+    <section class="stalls-section">
+        <div class="stalls-grid">
+            <!-- Liao Fan Hawker Chan -->
+            <div class="stall-card" data-category="chinese">
+                <img src="images/chinatownComplex/Liao Fan Hawker Chan.jpg" alt="Liao Fan Hawker Chan" class="stall-image">
+                <div class="stall-info">
+                    <h3>Liao Fan Hawker Chan</h3>
+                    <p class="cuisine-type"> Chinese • Roasted Meat</p>
+                    <p class="rating">⭐ 4.6/5 (1,890 reviews)</p>
+                    <p class="price-range">💰 $2.50 - $6.00</p>
+                    <button class="view-menu-btn" onclick="goToMenu('liao-fan-hawker-chan')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+
+            <!-- Lian He Ben Ji Claypot -->
+            <div class="stall-card" data-category="chinese">
+                <img src="Images/chinatownComplex/Lian He Ben Ji Claypot.jpg" alt="Lian He Ben Ji Claypot" class="stall-image">
+                <div class="stall-info">
+                    <h3>Lian He Ben Ji Claypot</h3>
+                    <p class="cuisine-type"> Chinese • Claypot Rice</p>
+                    <p class="rating">⭐ 4.3/5 (890 reviews)</p>
+                    <p class="price-range">💰 $5.00 - $9.00</p>
+                    <button class="view-menu-btn" onclick="goToMenu('lian-he-ben-ji-claypot')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+
+            <!-- Aziz Jaffar Muslim Food -->
+            <div class="stall-card" data-category="malay">
+                <img src="Images/chinatownComplex/Aziz Jaffar Muslim Food.jpg" alt="Aziz Jaffar Muslim Food" class="stall-image">
+                <div class="stall-info">
+                    <h3>Aziz Jaffar Muslim Food</h3>
+                    <p class="cuisine-type"> Malay • Muslim Food</p>
+                    <p class="rating">⭐ 4.4/5 (1,250 reviews)</p>
+                    <p class="price-range">💰 $3.50 - $6.00</p>
+                    <button class="view-menu-btn" onclick="goToMenu('aziz-jaffar-muslim-food')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+
+            <!-- Old Amoy Chendol -->
+            <div class="stall-card" data-category="drinks">
+                <img src="Images/chinatownComplex/Old Amoy Chendol.jpg" alt="Old Amoy Cendol" class="stall-image">
+                <div class="stall-info">
+                    <h3>Old Amoy Chendol</h3>
+                    <p class="cuisine-type"> Desserts • Malay Desserts</p>
+                    <p class="rating">⭐ 4.6/5 (1,890 reviews)</p>
+                    <p class="price-range">💰 $7.00 - $10.00</p>
+                    <button class="view-menu-btn" onclick="goToMenu('old-amoy-chendol')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+
+            <!-- The 1950s Coffee -->
+            <div class="stall-card" data-category="drinks">
+                <img src="Images/chinatownComplex/The 1950s Coffee.jpg" alt="The 1950s Coffee" class="stall-image">
+                <div class="stall-info">
+                    <h3>The 1950s Coffee</h3>
+                    <p class="cuisine-type"> Drinks • Coffee</p>
+                    <p class="rating">⭐ 4.4/5 (1,020 reviews)</p>
+                    <p class="price-range">💰 $1.50 - $3.50</p>
+                    <button class="view-menu-btn" onclick="goToMenu('the-1950s-coffee')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+
+            <!-- You Fu Fried Hokkien Prawn Noodle -->
+            <div class="stall-card" data-category="chinese">
+                <img src="Images/chinatownComplex/You Fu Fried Hokkien Prawn Noodle.jpg" alt="You Fu Fried Hokkien Prawn Noodle" class="stall-image">
+                <div class="stall-info">
+                    <h3>You Fu Fried Hokkien Prawn Noodle</h3>
+                    <p class="cuisine-type"> Chinese • Hokkien Prawn Noodle</p>
+                    <p class="rating">⭐ 4.5/5 (1,200 reviews)</p>
+                    <p class="price-range">💰 $4.00 - $7.00</p>
+                    <button class="view-menu-btn" onclick="goToMenu('you-fu-fried-hokkien-prawn-noodle')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+
+            <!-- Shanghai Fried Xiao Long Bao -->
+            <div class="stall-card" data-category="chinese">
+                <img src="Images/chinatownComplex/Shanghai Fried Xiao Long Bao.jpg" alt="Shanghai Fried Xiao Long Bao" class="stall-image">
+                <div class="stall-info">
+                    <h3>Shanghai Fried Xiao Long Bao</h3>
+                    <p class="cuisine-type"> Chinese • Dim Sum</p>
+                    <p class="rating">⭐ 4.2/5 (560 reviews)</p>
+                    <p class="price-range">💰 $2.50 - $7.00</p>
+                    <button class="view-menu-btn" onclick="goToMenu('shanghai-fried-xiao-long-bao')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+
+            <!-- Ann Chin Popiah -->
+            <div class="stall-card" data-category="chinese">
+                <img src="Images/chinatownComplex/Ann Chin Popiah.jpg" alt="Ann chin Popiah" class="stall-image">
+                <div class="stall-info">
+                    <h3>Ann Chin Popiah</h3>
+                    <p class="cuisine-type"> Chinese • Spring Rolls</p>
+                    <p class="rating">⭐ 4.3/5 (720 reviews)</p>
+                    <p class="price-range">💰 $3.00 - $5.00</p>
+                    <button class="view-menu-btn" onclick="goToMenu('ann-chin-popiah')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+
+            <!-- Jiakali -->
+            <div class="stall-card" data-category="indian">
+                <img src="Images/chinatownComplex/Jiakali.jpg" alt="Jiakali" class="stall-image">
+                <div class="stall-info">
+                    <h3>Jiakali</h3>
+                    <p class="cuisine-type"> Indian • Indian fusion</p>
+                    <p class="rating">⭐ 4.6/5 (1,420 reviews)</p>
+                    <p class="price-range">💰 $6.00 - $10.00</p>
+                    <button class="view-menu-btn" onclick="goToMenu('jiakali')">VIEW MENU & ORDER</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>HawkerHub 2026</p>
+        <p>Terms and services</p>
+    </footer>
+
+    <script src="ChinatownComplex-SelectStall.js"></script>
+</body>

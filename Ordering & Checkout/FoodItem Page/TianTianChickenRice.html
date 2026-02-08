@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - HawkerHub</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="Logo">
+            <button class="home-button" onclick="window.location.href='../../Main-Page/MainPage.html'">Hawker Hub</button>   
+            <button class="Normal-login">Login</button>
+            <button class="vendor-login">Vendor Login</button> 
+            <button class="Order-history">Order History</button>
+            <button class="Cart" onclick="showCart()"> Cart (<span id="cart-count">0</span>) </button>
+            <button class="Feedback"> Feedback </button>
+        </div>
+    </header>
+
+    <!-- Stall Header -->
+    <section class="stall-header">
+        <div class="stall-header-content">
+            <button class="back-button" onclick="goBack()">← Back to Stalls</button>
+            <h1 id="stall-name">Tian Tian Chicken Rice - Maxwell Food Centre</h1>
+            <p id="stall-address" class="address">1 Kadayanallur Street, Singapore 069184</p>
+            <div class="opening-hours">
+                <p><strong>Opening Hours</strong></p>
+                <p id="weekday-hours">Weekday: 10:00am - 8:00pm</p>
+                <p id="weekend-hours">Weekend: 10:00am - 8:00pm</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Items Grid -->
+    <section class="menu-section">
+        <h2>Menu Items</h2>
+        <div class="menu-grid" id="menu-grid">
+            
+            <!-- Steamed Chicken Rice (S) -->
+            <div class="menu-item">
+                <div class="menu-item-image">
+                    <img src="images/TianTian/SteamChickenRice.jpg" alt="Steamed Cheicken Rice (S)" class="menu-item-image">
+                    <div class="menu-item-info">
+                        <h3>Steamed Chicken Rice (S)</h3>
+                        <p class="menu-item-description">Tender steamed chicken served with fragrant rice</p>
+                        <p class="menu-item-price">$3.50</p>
+                        <div class="add-to-cart-section">
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="decreaseQuantity('tt-001')">-</button>
+                                <span class="quantity-display" id="qty-tt-001">1</span>
+                                <button class="quantity-btn" onclick="increaseQuantity('tt-001')">+</button>
+                            </div>
+                            <button class="add-to-cart-btn" onclick="addToCart('tt-001', 'Steamed Chicken Rice (S)', 3.50)">
+                            🛒 Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Steamed Chicken Rice (M) -->
+            <div class="menu-item">
+                <img src="images/TianTian/SteamChickenRice.jpg" alt="Steamed Cheicken Rice (M)" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Steamed Chicken Rice (M)</h3>
+                    <p class="menu-item-description">Tender steamed chicken served with fragrant rice</p>
+                    <p class="menu-item-price">$4.00</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('tt-002')">-</button>
+                            <span class="quantity-display" id="qty-tt-002">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('tt-002')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('tt-002', 'Steamed Chicken Rice (M)', 4.00)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Steamed Chicken Rice (L) -->
+            <div class="menu-item">
+                <img src="images/TianTian/SteamChickenRice.jpg" alt="Steamed Cheicken Rice (L)" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Steamed Chicken Rice (L)</h3>
+                    <p class="menu-item-description">Tender steamed chicken served with fragrant rice</p>
+                    <p class="menu-item-price">$5.00</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('tt-003')">-</button>
+                            <span class="quantity-display" id="qty-tt-003">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('tt-003')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('tt-003', 'Steamed Chicken Rice (L)', 5.00)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Roasted Chicken Rice (S) -->
+            <div class="menu-item">
+                <img src="images/TianTian/Roasted Chicken Rice.jpg" alt="Roasted Chicken Rice (S)" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Roasted Chicken Rice (S)</h3>
+                    <p class="menu-item-description">Crispy roasted chicken with flavorful rice</p>
+                    <p class="menu-item-price">$3.50</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('tt-004')">-</button>
+                            <span class="quantity-display" id="qty-tt-004">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('tt-004')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('tt-004', 'Roasted Chicken Rice (S)', 3.50)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Roasted Chicken Rice (M) -->
+            <div class="menu-item">
+                <img src="images/TianTian/Roasted Chicken Rice.jpg" alt="Roasted Chicken Rice (M)" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Roasted Chicken Rice (M)</h3>
+                    <p class="menu-item-description">Crispy roasted chicken with flavorful rice</p>
+                    <p class="menu-item-price">$4.00</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('tt-005')">-</button>
+                            <span class="quantity-display" id="qty-tt-005">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('tt-005')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('tt-005', 'Roasted Chicken Rice (M)', 4.00)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Roasted Chicken Rice (L) -->
+            <div class="menu-item">
+                <img src="images/TianTian/Roasted Chicken Rice.jpg" alt="Roasted Chicken Rice (L)" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Roasted Chicken Rice (L)</h3>
+                    <p class="menu-item-description">Crispy roasted chicken with flavorful rice</p>
+                    <p class="menu-item-price">$5.00</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('tt-006')">-</button>
+                            <span class="quantity-display" id="qty-tt-006">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('tt-006')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('tt-006', 'Roasted Chicken Rice (L)', 5.00)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lemon Chicken Rice (S) -->
+            <div class="menu-item">
+                <img src="images/TianTian/lemon chicken rice.jpg" alt="Roasted Chicken Rice (S)" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Lemon Chicken Rice (S)</h3>
+                    <p class="menu-item-description">Zesty lemon chicken with fragrant rice</p>
+                    <p class="menu-item-price">$4.50</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('tt-007')">-</button>
+                            <span class="quantity-display" id="qty-tt-007">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('tt-007')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('tt-007', 'Lemon Chicken Rice (S)', 4.50)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lemon Chicken Rice (M) -->
+            <div class="menu-item">
+                <img src="images/TianTian/lemon chicken rice.jpg" alt="Lemon Chicken Rice (M)" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Lemon Chicken Rice (M)</h3>
+                    <p class="menu-item-description">Zesty lemon chicken with fragrant rice</p>
+                    <p class="menu-item-price">$5.00</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('tt-008')">-</button>
+                            <span class="quantity-display" id="qty-tt-008">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('tt-008')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('tt-008', 'Lemon Chicken Rice (M)', 5.00)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lemon Chicken Rice (L) -->
+            <div class="menu-item">
+                <img src="images/TianTian/lemon chicken rice.jpg" alt="Lemon Chicken Rice (L)" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Lemon Chicken Rice (L)</h3>
+                    <p class="menu-item-description">Zesty lemon chicken with fragrant rice</p>
+                    <p class="menu-item-price">$6.00</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('tt-009')">-</button>
+                            <span class="quantity-display" id="qty-tt-009">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('tt-009')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('tt-009', 'Lemon Chicken Rice (L)', 6.00)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Egg (Add-on) -->
+            <div class="menu-item">
+                <img src="images/TianTian/Egg(Add Ons).jpg" alt="Egg (Add-On)" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Egg (Add-on)</h3>
+                    <p class="menu-item-description">Additional egg</p>
+                    <p class="menu-item-price">$1.00</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('tt-010')">-</button>
+                            <span class="quantity-display" id="qty-tt-010">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('tt-010')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('tt-010', 'Egg (Add-on)', 1.00)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rice (Add-on) -->
+            <div class="menu-item">
+                <img src="images/TianTian/Rice (Add-On).jpg" alt="Rice (Add-On)" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Rice (Add-on)</h3>
+                    <p class="menu-item-description">Extra portion of rice</p>
+                    <p class="menu-item-price">$1.50</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('tt-011')">-</button>
+                            <span class="quantity-display" id="qty-tt-011">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('tt-011')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('tt-011', 'Rice (Add-on)', 1.50)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Soup (Add-on) -->
+            <div class="menu-item">
+                <img src="images/TianTian/soup (Add-on).jpg" alt="Rice (Add-On)" class="menu-item-image">
+                <div class="menu-item-info">
+                    <h3>Soup (Add-on)</h3>
+                    <p class="menu-item-description">Bowl of soup</p>
+                    <p class="menu-item-price">$1.00</p>
+                    <div class="add-to-cart-section">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity('tt-012')">-</button>
+                            <span class="quantity-display" id="qty-tt-012">1</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('tt-012')">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('tt-012', 'Soup (Add-on)', 1.00)">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>HawkerHub 2026</p>
+        <p>Terms and services</p>
+    </footer>
+
+    <!-- Add to Cart Notification -->
+    <div id="cart-notification" class="cart-notification">
+        <p>✓ Item added to cart!</p>
+    </div>
+
+    <script src="TianTianChickenRice.js"></script>
+</body>
+</html>

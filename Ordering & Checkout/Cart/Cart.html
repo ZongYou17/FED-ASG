@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - HawkerHub</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="Logo">
+            <button class="home-button" onclick="window.location.href='../../Main-Page/MainPage.html'">Hawker Hub</button>   
+            <button class="Normal-login">Login</button>
+            <button class="vendor-login">Vendor Login</button> 
+            <button class="Order-history">Order History</button>
+            <button class="Cart">Cart (<span id="cart-count">0</span>)</button>
+            <button class="Feedback"> Feedback </button>
+        </div>
+    </header>
+
+    <!-- Cart Container -->
+    <div class="cart-container">
+        <h1 class="cart-title">Your Cart</h1>
+        
+        <div class="cart-content">
+            <!-- Cart Items Section -->
+            <div class="cart-items-section">
+                <div id="cart-items">
+                </div>
+            </div>
+            
+            <!-- Order Summary Sidebar -->
+            <div class="order-summary-card">
+                <h2>Order Summary</h2>
+                
+                <div class="summary-details">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotal-amount">$0.00</span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span>Delivery Fee</span>
+                        <span id="delivery-fee">$0.00</span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span>Service Fee (5%)</span>
+                        <span id="service-fee">$0.00</span>
+                    </div>
+                    
+                    <div class="divider"></div>
+                    
+                    <div class="summary-row total-row">
+                        <strong>Total</strong>
+                        <strong id="total-amount">$0.00</strong>
+                    </div>
+                </div>
+                
+                <button class="checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+                <button class="continue-shopping-btn" onclick="continueShopping()">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>HawkerHub 2026</p>
+        <p>Terms and services</p>
+    </footer>
+
+    <script src="Cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayNow - Payment</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="payment-card">
+            <button class="back-btn" onclick="window.location.href='../PaymentMethod.html'">
+                ← Back
+            </button>
+            
+            <h1 class="title">PayNow</h1>
+            <p class="subtitle">Complete your payment via PayNow</p>
+            
+            <form id="payNowForm" class="payment-form">
+                <div class="paynow-info">
+                    <div class="paynow-icon">
+                        <span style="font-size: 48px;">🏦</span>
+                    </div>
+                    <p class="info-text">Scan the QR code with your banking app or enter your details below</p>
+                </div>
+
+                <div class="qr-code-section">
+                    <div class="qr-placeholder">
+                        <p>QR Code</p>
+                        <p style="font-size: 80px;">⬜</p>
+                        <p class="qr-text">Scan with your mobile banking app</p>
+                    </div>
+                </div>
+
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="payNowId">PayNow Mobile/UEN/VPA</label>
+                    <input type="text" id="payNowId" name="payNowId" placeholder="Enter your PayNow ID" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="John Doe" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                </div>
+
+                <div class="order-summary">
+                    <h3>Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery Fee</span>
+                        <span id="deliveryFee">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Service Fee</span>
+                        <span id="serviceFee">$0.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="totalAmount">$0.00</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="confirm-btn">
+                    Confirm PayNow Payment
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="Paynow.js"></script>
+</body>
+</html>
