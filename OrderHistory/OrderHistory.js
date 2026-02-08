@@ -1,62 +1,79 @@
-document.addEventListener('DOMContentLoaded', () => {
 
-    /* 🔹 Simulated logged-in hawker */
-    const loggedInStall = "Chicken Rice Stall";
+const userId = "userId123"; // replace dynamically if you have auth
+const baseURL = "https://hawker-hub-app-default-rtdb.asia-southeast1.firebasedatabase.app/orders/";
+const container = document.getElementById("orderHistoryContainer");
+const filterSelect = document.getElementById("hawkerFilter");
 
-    document.getElementById("stall-name").textContent =
-        `Stall Name: ${loggedInStall}`;
+let allOrders = [];
 
-    
-    const hawkerCentreImages = {
-        "Maxwell Food Centre": "images/maxwell.png",
-        "Chinatown Complex": "images/chinatown.png",
-        "Old Airport Road Food Centre": "images/oldairport.png",
-        "Tiong Bahru Market": "images/tiongbahru.png"
-    };
-
-    /* 🔹 Load and filter orders */
-    const allOrders = JSON.parse(localStorage.getItem("hawkerOrders")) || [];
-    const hawkerOrders = allOrders.filter(
-        order => order.stallName === loggedInStall
-    );
-
-    const orderList = document.getElementById("order-list");
-
-    if (hawkerOrders.length === 0) {
-        orderList.innerHTML = "<p>No orders available.</p>";
-        return;
+fetch(`${baseURL}${userId}.json`)
+  .then(res => res.json())
+  .then(data => {
+    if (!data) {
+      container.innerHTML = "<p>No orders found.</p>";
+      return;
     }
 
-    /* 🔹 Hawker centre display */
-    const hawkerCentre = hawkerOrders[0].hawkerCentre;
-    const hawkerImage = document.getElementById("hawker-image");
-    const hawkerCentreName = document.getElementById("hawker-centre-name");
+    allOrders = Object.values(data).reverse();
+    populateFilter(allOrders);
+    renderOrders(allOrders);
+  })
+  .catch(() => {
+    container.innerHTML = "<p>Failed to load order history.</p>";
+  });
 
-    hawkerCentreName.textContent = hawkerCentre;
+function populateFilter(orders) {
+  const centres = [...new Set(orders.map(o => o.hawkerCentre))];
+  centres.forEach(c => {
+    const opt = document.createElement("option");
+    opt.value = c;
+    opt.textContent = c;
+    filterSelect.appendChild(opt);
+  });
+}
 
-    if (hawkerCentreImages[hawkerCentre]) {
-        hawkerImage.src = hawkerCentreImages[hawkerCentre];
-    } else {
-        hawkerImage.style.display = "none";
-    }
-
-    /* 🔹 Render order cards */
-    hawkerOrders.forEach(order => {
-        const orderCard = document.createElement("div");
-        orderCard.className = "order-card";
-
-        let itemsHTML = "";
-        order.items.forEach(item => {
-            itemsHTML += `<li>${item.name} × ${item.quantity}</li>`;
-        });
-
-        orderCard.innerHTML = `
-            <h3>${order.orderNumber}</h3>
-            <p><strong>Date:</strong> ${order.dateTime}</p>
-            <p class="status"><strong>Status:</strong> ${order.status}</p>
-            <ul>${itemsHTML}</ul>
-        `;
-
-        orderList.appendChild(orderCard);
-    });
+filterSelect.addEventListener("change", () => {
+  const value = filterSelect.value;
+  const filtered =
+    value === "all"
+      ? allOrders
+      : allOrders.filter(o => o.hawkerCentre === value);
+  renderOrders(filtered);
 });
+
+function renderOrders(orders) {
+  container.innerHTML = "";
+
+  orders.forEach(order => {
+    const date = new Date(order.timestamp).toLocaleString();
+    let itemsHTML = "";
+
+    order.items.forEach(item => {
+      itemsHTML += `
+        <div class="order-item">
+          <span>${item.qty} × ${item.name}</span>
+          <span>$${(item.price * item.qty).toFixed(2)}</span>
+        </div>
+      `;
+    });
+
+    container.innerHTML += `
+      <div class="order-card">
+        <div class="order-header">
+          <h3>${order.stallName}</h3>
+          <span class="status completed">${order.status}</span>
+        </div>
+
+        <div class="order-meta">
+          <p>${order.hawkerCentre}</p>
+          <p>${date}</p>
+        </div>
+
+        <div class="order-items">
+          ${itemsHTML}
+          <div class="total">Total: $${order.totalPrice.toFixed(2)}</div>
+        </div>
+      </div>
+    `;
+  });
+}

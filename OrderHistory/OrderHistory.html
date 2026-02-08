@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Order History</title>
-    <link rel="stylesheet" href="orderhistory.css">
+  <meta charset="UTF-8">
+  <title>Order History | HawkerHub</title>
+  <link rel="stylesheet" href="orderhistory.css">
 </head>
 <body>
 
-<header>
+  <header class="page-header">
     <h1>Order History</h1>
-    <p id="stall-name"></p>
+    <p>View your past hawker centre orders</p>
+  </header>
 
-    <!-- Hawker Centre Section -->
-    <div class="hawker-centre">
-        <img id="hawker-image" alt="Hawker Centre Image">
-        <p id="hawker-centre-name"></p>
-    </div>
-</header>
+  <section class="filter-bar">
+    <label for="hawkerFilter">Filter by Hawker Centre:</label>
+    <select id="hawkerFilter">
+      <option value="all">All Hawker Centres</option>
+    </select>
+  </section>
 
-<main>
-    <div id="order-list"></div>
-</main>
+  <section id="orderHistoryContainer" class="order-history"></section>
 
-<script src="orderhistory.js"></script>
+  <script src="orderhistory.js"></script>
 </body>
 </html>
