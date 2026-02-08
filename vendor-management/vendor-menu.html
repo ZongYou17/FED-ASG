@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor - Menu</title>
+    <link rel="stylesheet" href="vendor.css">
+    <style>
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 40px;
+            font-weight: 700;
+            color: #222;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #ccc;
+            text-align: center;
+            width: 100%;
+        }
+        
+        @media (max-width: 1200px) {
+            .section-title {
+                font-size: 32px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 28px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 24px;
+            }
+        }
+
+        .menu-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .menu-item-card {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background: #f9f9f9;
+            padding: 20px;
+            position: relative;
+            min-height: 520px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .menu-item-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .menu-item-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #0066cc;
+        }
+        
+        .menu-item-image {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 6px;
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+        }
+        
+        .menu-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .change-image-btn {
+            width: 100%;
+            background: #f0f0f0;
+            color: #666;
+            border: 2px solid #ccc;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .change-image-btn:hover {
+            background: #e0e0e0;
+            border-color: #999;
+            transform: translateY(-2px);
+        }
+        
+        .menu-item-details {
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .cuisine-types {
+            margin-bottom: 20px;
+        }
+        
+        .cuisine-types h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #444;
+        }
+        
+        .cuisine-checkboxes {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            background: white;
+            max-height: 120px;
+            overflow-y: auto;
+        }
+        
+        .cuisine-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .cuisine-option:last-child {
+            margin-bottom: 0;
+        }
+        
+        .cuisine-option input[type="checkbox"] {
+            margin-right: 8px;
+        }
+        
+        .cuisine-option label {
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+        }
+        
+        .likes-count {
+            font-size: 16px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: auto;
+        }
+        
+        .star-icon {
+            color: gold;
+            font-size: 18px;
+        }
+        
+        .likes-number {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .remove-item-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 0;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 15px;
+            transition: all 0.3s;
+            box-shadow: 0 2px 4px rgba(231, 76, 60, 0.2);
+        }
+        
+        .remove-item-btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
+        }
+        
+        .add-item-card {
+            border: 2px dashed #ccc;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 520px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .add-item-card:hover {
+            background: #e9e9e9;
+            border-color: #999;
+            transform: translateY(-2px);
+        }
+        
+        .add-item-content {
+            text-align: center;
+            color: #666;
+        }
+        
+        .add-item-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #0066cc;
+        }
+        
+        .add-item-text {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .remove-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .remove-modal.show {
+            display: flex;
+        }
+
+        .remove-modal-content {
+            background: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .remove-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            border-bottom: 2px solid #eee;
+            background: #f9f9f9;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .remove-modal-header h3 {
+            margin: 0;
+            font-size: 24px;
+            color: #222;
+        }
+
+        .close-remove-modal {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #666;
+            line-height: 1;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-remove-modal:hover {
+            background: #eee;
+            color: #222;
+        }
+
+        .remove-modal-body {
+            padding: 25px;
+        }
+
+        .item-to-remove {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #e74c3c;
+            text-align: center;
+        }
+
+        .item-to-remove h4 {
+            margin: 0 0 10px 0;
+            color: #222;
+            font-size: 20px;
+        }
+
+        .item-to-remove p {
+            margin: 0;
+            font-size: 18px;
+            color: #666;
+        }
+
+        .warning-message {
+            background: #fff5f5;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #ffcccc;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .warning-message p {
+            margin: 0;
+            color: #e74c3c;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .remove-modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            padding: 20px 25px;
+            border-top: 2px solid #eee;
+            background: #f9f9f9;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .remove-modal-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cancel-remove-btn {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .cancel-remove-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .confirm-remove-btn {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .confirm-remove-btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        /* Success message */
+        .remove-success {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .remove-success.show {
+            display: flex;
+        }
+
+        .remove-success-content {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .remove-success h3 {
+            color: #27ae60;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .remove-success p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .remove-success-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .remove-success-btn:hover {
+            background: #219653;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .menu-grid {
+                gap: 25px;
+            }
+            
+            .menu-item-card {
+                min-height: 500px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .menu-item-card {
+                min-height: 480px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .menu-item-card {
+                min-height: 500px;
+            }
+            
+            .menu-item-image {
+                height: 180px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .menu-item-card {
+                width: 95%;
+                margin: 0 auto;
+            }
+            
+            .menu-item-image {
+                height: 160px;
+            }
+            
+            .change-image-btn,
+            .remove-item-btn {
+                padding: 10px;
+                font-size: 14px;
+            }
+            
+            .remove-modal-content {
+                width: 95%;
+            }
+            
+            .remove-modal-header h3 {
+                font-size: 20px;
+            }
+            
+            .remove-modal-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo" class="logo-img">
+        </div>
+        
+        <div class="stall-info">
+            <h1>Selera Rasa Nasi Lemak</h1>
+            <p>Maxwell Food Centre</p>
+        </div>
+        
+        <div class="unit">#01-10</div>
+</header>
+    
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="vendor-home.html" class="nav-link">Home</a>
+        <a href="vendor-menu.html" class="nav-link active">Menu</a>
+        <a href="vendor-rental.html" class="nav-link">Rental</a>
+        <a href="vendor-dashboard.html" class="nav-link">Dashboard</a>
+        <a href="vendor-feedback.html" class="nav-link">Feedback</a>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="container">
+        <h2 class="section-title">Menu</h2>
+        
+        <div class="menu-container">
+            <div class="menu-grid">
+                <!-- Menu Item 1: Nasi Lemak - S -->
+                <div class="menu-item-card" data-item-id="1">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-title">Nasi Lemak - S</h3>
+                        <div class="menu-item-price">$4.50</div>
+                    </div>
+                    
+                    <div class="menu-item-image">
+                        <img src="images/nasi-lemak.png" alt="Nasi Lemak">
+                    </div>
+                    
+                    <button class="change-image-btn">Change Image</button>
+                    
+                    <div class="menu-item-details">
+                        <div class="cuisine-types">
+                            <h4>Cuisine type:</h4>
+                            <div class="cuisine-checkboxes">
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="nasilemak1-sg" checked>
+                                    <label for="nasilemak1-sg">Singaporean</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="nasilemak1-my" checked>
+                                    <label for="nasilemak1-my">Malaysian</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="nasilemak1-id" checked>
+                                    <label for="nasilemak1-id">Indonesian</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="nasilemak1-ch">
+                                    <label for="nasilemak1-ch">Chinese</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="nasilemak1-kor">
+                                    <label for="nasilemak1-kor">Korean</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="nasilemak1-jp">
+                                    <label for="nasilemak1-jp">Japanese</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="nasilemak1-in">
+                                    <label for="nasilemak1-in">Indian</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="nasilemak1-west">
+                                    <label for="nasilemak1-west">Western</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="likes-count">
+                            <span class="star-icon">★</span>
+                            Number of likes: <span class="likes-number">25</span>
+                        </div>
+                    </div>
+                    
+                    <button class="remove-item-btn" data-item-name="Nasi Lemak - S" data-item-price="$4.50">Remove Item</button>
+                </div>
+                
+                <!-- Menu Item 2: Nasi Lemak - M -->
+                <div class="menu-item-card" data-item-id="2">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-title">Nasi Lemak - M</h3>
+                        <div class="menu-item-price">$5.50</div>
+                    </div>
+                    
+                    <div class="menu-item-image">
+                        <img src="images/nasi-lemak.png" alt="Nasi Lemak">
+                    </div>
+                    
+                    <button class="change-image-btn">Change Image</button>
+                    
+                    <div class="menu-item-details">
+                        <div class="cuisine-types">
+                            <h4>Cuisine type:</h4>
+                            <div class="cuisine-checkboxes">
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="nasilemak2-sg" checked>
+                                    <label for="nasilemak2-sg">Singaporean</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="nasilemak2-my" checked>
+                                    <label for="nasilemak2-my">Malaysian</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="nasilemak2-id" checked>
+                                    <label for="nasilemak2-id">Indonesian</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="nasilemak2-ch">
+                                    <label for="nasilemak2-ch">Chinese</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="nasilemak2-kor">
+                                    <label for="nasilemak2-kor">Korean</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="nasilemak2-jp">
+                                    <label for="nasilemak2-jp">Japanese</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="nasilemak2-in">
+                                    <label for="nasilemak2-in">Indian</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="nasilemak2-west">
+                                    <label for="nasilemak2-west">Western</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="likes-count">
+                            <span class="star-icon">★</span>
+                            Number of likes: <span class="likes-number">18</span>
+                        </div>
+                    </div>
+                    
+                    <button class="remove-item-btn" data-item-name="Nasi Lemak - M" data-item-price="$5.50">Remove Item</button>
+                </div>
+                
+                <!-- Menu Item 3: Nasi Lemak - L -->
+                <div class="menu-item-card" data-item-id="3">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-title">Nasi Lemak - L</h3>
+                        <div class="menu-item-price">$6.50</div>
+                    </div>
+                    
+                    <div class="menu-item-image">
+                        <img src="images/nasi-lemak.png" alt="Nasi Lemak">
+                    </div>
+                    
+                    <button class="change-image-btn">Change Image</button>
+                    
+                    <div class="menu-item-details">
+                        <div class="cuisine-types">
+                            <h4>Cuisine type:</h4>
+                            <div class="cuisine-checkboxes">
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="nasilemak3-sg" checked>
+                                    <label for="nasilemak3-sg">Singaporean</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="nasilemak3-my" checked>
+                                    <label for="nasilemak3-my">Malaysian</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="nasilemak3-id" checked>
+                                    <label for="nasilemak3-id">Indonesian</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="nasilemak3-ch">
+                                    <label for="nasilemak3-ch">Chinese</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="nasilemak3-kor">
+                                    <label for="nasilemak3-kor">Korean</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="nasilemak3-jp">
+                                    <label for="nasilemak3-jp">Japanese</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="nasilemak3-in">
+                                    <label for="nasilemak3-in">Indian</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="nasilemak3-west">
+                                    <label for="nasilemak3-west">Western</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="likes-count">
+                            <span class="star-icon">★</span>
+                            Number of likes: <span class="likes-number">22</span>
+                        </div>
+                    </div>
+                    
+                    <button class="remove-item-btn" data-item-name="Nasi Lemak - L" data-item-price="$6.50">Remove Item</button>
+                </div>
+            </div>
+            
+            <!-- Second Row -->
+            <div class="menu-grid">
+                <!-- Menu Item 4: Fried Chicken -->
+                <div class="menu-item-card" data-item-id="4">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-title">Fried Chicken (5 pcs)</h3>
+                        <div class="menu-item-price">$8.00</div>
+                    </div>
+                    
+                    <div class="menu-item-image">
+                        <img src="images/chicken.png" alt="Fried Chicken">
+                    </div>
+                    
+                    <button class="change-image-btn">Change Image</button>
+                    
+                    <div class="menu-item-details">
+                        <div class="cuisine-types">
+                            <h4>Cuisine type:</h4>
+                            <div class="cuisine-checkboxes">
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="chicken-kor" checked>
+                                    <label for="chicken-kor">Korean</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="chicken-jp" checked>
+                                    <label for="chicken-jp">Japanese</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="chicken-west" checked>
+                                    <label for="chicken-west">Western</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="chicken-sg">
+                                    <label for="chicken-sg">Singaporean</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="chicken-my">
+                                    <label for="chicken-my">Malaysian</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="chicken-id">
+                                    <label for="chicken-id">Indonesian</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="chicken-ch">
+                                    <label for="chicken-ch">Chinese</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="chicken-in">
+                                    <label for="chicken-in">Indian</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="likes-count">
+                            <span class="star-icon">★</span>
+                            Number of likes: <span class="likes-number">15</span>
+                        </div>
+                    </div>
+                    
+                    <button class="remove-item-btn" data-item-name="Fried Chicken (5 pcs)" data-item-price="$8.00">Remove Item</button>
+                </div>
+                
+                <!-- Menu Item 5: Satay -->
+                <div class="menu-item-card" data-item-id="5">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-title">Satay (5pcs)</h3>
+                        <div class="menu-item-price">$5.00</div>
+                    </div>
+                    
+                    <div class="menu-item-image">
+                        <img src="images/satay.png" alt="Satay">
+                    </div>
+                    
+                    <button class="change-image-btn">Change Image</button>
+                    
+                    <div class="menu-item-details">
+                        <div class="cuisine-types">
+                            <h4>Cuisine type:</h4>
+                            <div class="cuisine-checkboxes">
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="satay-my" checked>
+                                    <label for="satay-my">Malaysian</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="satay-id" checked>
+                                    <label for="satay-id">Indonesian</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="satay-sg">
+                                    <label for="satay-sg">Singaporean</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="satay-ch">
+                                    <label for="satay-ch">Chinese</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="satay-kor">
+                                    <label for="satay-kor">Korean</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="satay-jp">
+                                    <label for="satay-jp">Japanese</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="satay-in">
+                                    <label for="satay-in">Indian</label>
+                                </div>
+                                <div class="cuisine-option">
+                                    <input type="checkbox" id="satay-west">
+                                    <label for="satay-west">Western</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="likes-count">
+                            <span class="star-icon">★</span>
+                            Number of likes: <span class="likes-number">30</span>
+                        </div>
+                    </div>
+                    
+                    <button class="remove-item-btn" data-item-name="Satay (5pcs)" data-item-price="$5.00">Remove Item</button>
+                </div>
+                
+                <!-- Add New Menu Item -->
+                <div class="menu-item-card add-item-card">
+                    <div class="add-item-content">
+                        <div class="add-item-icon">+</div>
+                        <div class="add-item-text">Add New Menu Item</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Remove Confirmation Modal -->
+    <div id="removeModal" class="remove-modal">
+        <div class="remove-modal-content">
+            <div class="remove-modal-header">
+                <h3>Remove Menu Item</h3>
+                <button class="close-remove-modal">&times;</button>
+            </div>
+            <div class="remove-modal-body">
+                <div class="item-to-remove">
+                    <h4 id="itemNameDisplay"></h4>
+                    <p id="itemPriceDisplay"></p>
+                </div>
+                
+                <div class="warning-message">
+                    <p>⚠️ Are you sure you want to remove this item from your menu?</p>
+                    <p>This action cannot be undone.</p>
+                </div>
+            </div>
+            <div class="remove-modal-footer">
+                <button id="cancelRemove" class="remove-modal-btn cancel-remove-btn">Cancel</button>
+                <button id="confirmRemove" class="remove-modal-btn confirm-remove-btn">Remove Item</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Success Message -->
+    <div id="removeSuccess" class="remove-success">
+        <div class="remove-success-content">
+            <h3>✓ Item Removed!</h3>
+            <p>Menu item <span id="removedItemName" style="font-weight: bold; color: #222;"></span> has been removed successfully.</p>
+            <button id="closeRemoveSuccess" class="remove-success-btn">OK</button>
+        </div>
+    </div>
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
+
+    <script src="vendor-menu.js"></script>
+</body>
+</html>

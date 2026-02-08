@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor - Feedback</title>
+    <link rel="stylesheet" href="vendor.css">
+    <style>
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 40px;
+            font-weight: 700;
+            color: #222;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #ccc;
+            text-align: center;
+            width: 100%;
+        }
+
+        .feedback-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .feedback-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .feedback-box {
+            border: 2px solid #ddd;
+            padding: 25px;
+            border-radius: 8px;
+            background: #f9f9f9;
+            position: relative;
+            min-height: 200px;
+            width: 100%;
+        }
+        
+        .feedback-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .feedback-icon {
+            width: 35px;
+            height: 35px;
+        }
+        
+        .feedback-title {
+            font-size: 26px;
+            margin: 0;
+            font-weight: bold;
+        }
+        
+        .feedback-content {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            padding-right: 20px;
+            min-height: 100px;
+        }
+        
+        .feedback-author {
+            font-style: italic;
+            color: #666;
+            font-size: 16px;
+            position: absolute;
+            bottom: 25px;
+            left: 25px;
+        }
+        
+        .reply-button {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: #0066cc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .reply-button:hover {
+            background: #0055aa;
+            transform: translateY(-2px);
+        }
+        
+        .empty-content {
+            color: #999;
+            font-style: italic;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .feedback-row {
+            width: 100%;
+        }
+        
+        .reply-container {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+        }
+        
+        .reply-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .reply-icon {
+            width: 25px;
+            height: 25px;
+        }
+        
+        .reply-title {
+            font-weight: bold;
+            font-size: 18px;
+            color: #0066cc;
+        }
+        
+        .reply-content {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #444;
+            background-color: #f0f8ff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #cce7ff;
+            margin-bottom: 10px;
+        }
+        
+        .reply-timestamp {
+            font-size: 14px;
+            color: #888;
+            font-style: italic;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            border-bottom: 2px solid #eee;
+            background: #f9f9f9;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 24px;
+            color: #222;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #666;
+            line-height: 1;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-modal:hover {
+            background: #eee;
+            color: #222;
+        }
+
+        .modal-body {
+            padding: 25px;
+        }
+
+        .feedback-preview {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #0066cc;
+        }
+
+        .feedback-preview p {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .feedback-author-preview {
+            font-style: italic;
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        #replyText {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        #replyText:focus {
+            outline: none;
+            border-color: #0066cc;
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            padding: 20px 25px;
+            border-top: 2px solid #eee;
+            background: #f9f9f9;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .modal-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cancel-btn {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .cancel-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .submit-btn {
+            background: #0066cc;
+            color: white;
+        }
+
+        .submit-btn:hover {
+            background: #0055aa;
+            transform: translateY(-2px);
+        }
+
+        .success-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            z-index: 1001;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-message h3 {
+            color: #27ae60;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .success-message p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .success-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .success-btn:hover {
+            background: #219653;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 1200px) {
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .feedback-title {
+                font-size: 24px;
+            }
+            
+            .feedback-content {
+                font-size: 17px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .feedback-container {
+                padding: 0 15px;
+            }
+            
+            .feedback-row {
+                gap: 25px;
+            }
+            
+            .feedback-box {
+                padding: 22px;
+            }
+            
+            .feedback-title {
+                font-size: 22px;
+            }
+            
+            .feedback-content {
+                font-size: 16px;
+                margin-bottom: 22px;
+            }
+            
+            .reply-button {
+                padding: 9px 18px;
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 28px;
+                margin-bottom: 30px;
+            }
+            
+            .feedback-row {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .feedback-box {
+                padding: 20px;
+            }
+            
+            .feedback-title {
+                font-size: 22px;
+            }
+            
+            .feedback-content {
+                font-size: 16px;
+                margin-bottom: 20px;
+                padding-right: 15px;
+            }
+            
+            .feedback-author {
+                bottom: 20px;
+                left: 20px;
+            }
+            
+            .reply-button {
+                top: 20px;
+                right: 20px;
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+            
+            .modal-content {
+                width: 95%;
+            }
+            
+            .modal-header h3 {
+                font-size: 20px;
+            }
+            
+            .modal-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 24px;
+                margin-bottom: 25px;
+            }
+            
+            .feedback-box {
+                padding: 18px;
+                min-height: 180px;
+            }
+            
+            .feedback-header {
+                gap: 12px;
+                margin-bottom: 15px;
+                padding-bottom: 12px;
+            }
+            
+            .feedback-icon {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .feedback-title {
+                font-size: 20px;
+            }
+            
+            .feedback-content {
+                font-size: 15px;
+                line-height: 1.5;
+                margin-bottom: 18px;
+                padding-right: 10px;
+            }
+            
+            .feedback-author {
+                font-size: 14px;
+                bottom: 18px;
+                left: 18px;
+            }
+            
+            .reply-button {
+                top: 18px;
+                right: 18px;
+                padding: 7px 14px;
+                font-size: 13px;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 10px;
+            }
+            
+            .modal-header {
+                padding: 15px 20px;
+            }
+            
+            .modal-body {
+                padding: 20px;
+            }
+            
+            .feedback-preview {
+                padding: 12px;
+            }
+            
+            .modal-footer {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .modal-btn {
+                width: 100%;
+                padding: 12px;
+            }
+            
+            .success-message {
+                padding: 25px 20px;
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo" class="logo-img">
+        </div>
+        
+        <div class="stall-info">
+            <h1>Selera Rasa Nasi Lemak</h1>
+            <p>Maxwell Food Centre</p>
+        </div>
+        
+        <div class="unit">#01-10</div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="vendor-home.html" class="nav-link">Home</a>
+        <a href="vendor-menu.html" class="nav-link">Menu</a>
+        <a href="vendor-rental.html" class="nav-link">Rental</a>
+        <a href="vendor-dashboard.html" class="nav-link">Dashboard</a>
+        <a href="vendor-feedback.html" class="nav-link active">Feedback</a>
+    </nav>
+    
+    <!-- Main content -->
+    <main class="container">
+        <h2 class="section-title">Feedback</h2>
+        
+        <div class="feedback-container">
+            <div class="feedback-row">
+                <!-- Complaint 1-->
+                <div class="feedback-box" data-feedback-id="1">
+                    <button class="reply-button">Reply</button>
+                    <div class="feedback-header">
+                        <img src="images/complaint.png" alt="Complaint" class="feedback-icon">
+                        <h3 class="feedback-title">Complaint</h3>
+                    </div>
+                    <div class="feedback-content">
+                        Ordered a plate of nasi lemak which tasted bland and unappetising, especially for such a high price. Hope you can adjust the price of the food and review on the taste of it.
+                    </div>
+                    <div class="feedback-author">
+                        By: FoodieReviewer10
+                    </div>
+                </div>
+                
+                <!-- Feedback 1-->
+                <div class="feedback-box" data-feedback-id="2">
+                    <button class="reply-button">Reply</button>
+                    <div class="feedback-header">
+                        <img src="images/feedback.png" alt="Feedback" class="feedback-icon">
+                        <h3 class="feedback-title">Feedback</h3>
+                    </div>
+                    <div class="feedback-content">
+                        Tasted one of the most wonderful delights I've had in a while! Stall owner was really friendly and polite too! Would definitely come again!
+                    </div>
+                    <div class="feedback-author">
+                        By: HelloItsAnnie123
+                    </div>
+                </div>
+            </div>
+            
+            <div class="feedback-row">
+                <!-- Complaint 2-->
+                <div class="feedback-box" data-feedback-id="3">
+                    <button class="reply-button">Reply</button>
+                    <div class="feedback-header">
+                        <img src="images/complaint.png" alt="Complaint" class="feedback-icon">
+                        <h3 class="feedback-title">Complaint</h3>
+                    </div>
+                    <div class="feedback-content">
+                        The fried chicken (5 pcs for $8) was disappointingly dry and overcooked. The batter was too thick and lacked seasoning. For the price, I expected crispier and more flavorful chicken pieces. The portion size also seemed smaller than advertised.
+                    </div>
+                    <div class="feedback-author">
+                        By: ChickenLover88
+                    </div>
+                </div>
+                
+                <!-- Feedback 2 -->
+                <div class="feedback-box" data-feedback-id="4">
+                    <button class="reply-button">Reply</button>
+                    <div class="feedback-header">
+                        <img src="images/feedback.png" alt="Feedback" class="feedback-icon">
+                        <h3 class="feedback-title">Feedback</h3>
+                    </div>
+                    <div class="feedback-content">
+                        The satay (5pcs for $5) was absolutely delicious! Perfectly grilled with just the right amount of char, tender meat, and the peanut sauce was rich and flavorful. Great value for money - will definitely order again and recommend to friends!
+                    </div>
+                    <div class="feedback-author">
+                        By: SatayFanatic
+                    </div>
+                </div>
+            </div>
+            
+            <div class="feedback-row">
+                <!-- Complaint 3 -->
+                <div class="feedback-box" data-feedback-id="5">
+                    <button class="reply-button">Reply</button>
+                    <div class="feedback-header">
+                        <img src="images/complaint.png" alt="Complaint" class="feedback-icon">
+                        <h3 class="feedback-title">Complaint</h3>
+                    </div>
+                    <div class="feedback-content">
+                        Ordered the Nasi Lemak - M ($5.50) and was disappointed with the portion size. The rice portion was too small compared to the price, and the sambal was not spicy enough. The fried chicken wing that came with it was tiny. Not worth $5.50 in my opinion.
+                    </div>
+                    <div class="feedback-author">
+                        By: HungryCustomer99
+                    </div>
+                </div>
+                
+                <!-- Feedback 3 -->
+                <div class="feedback-box" data-feedback-id="6">
+                    <button class="reply-button">Reply</button>
+                    <div class="feedback-header">
+                        <img src="images/feedback.png" alt="Feedback" class="feedback-icon">
+                        <h3 class="feedback-title">Feedback</h3>
+                    </div>
+                    <div class="feedback-content">
+                        The Nasi Lemak - L ($6.50) was absolutely worth every penny! Fragrant coconut rice, perfectly cooked, with generous portions of crispy ikan bilis, peanuts, and a perfectly balanced sambal that had just the right kick. The fried chicken wing was juicy and flavorful. Best nasi lemak I've had in Singapore!
+                    </div>
+                    <div class="feedback-author">
+                        By: NasiLemakConnoisseur
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Reply Modal -->
+    <div id="replyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Reply to Feedback</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="feedback-preview">
+                    <p id="feedbackText"></p>
+                    <p class="feedback-author-preview" id="feedbackAuthor"></p>
+                </div>
+                <textarea id="replyText" placeholder="Type your reply here..." rows="4"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button id="cancelReply" class="modal-btn cancel-btn">Cancel</button>
+                <button id="submitReply" class="modal-btn submit-btn">Send Reply</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Success Message -->
+    <div id="successMessage" class="success-message">
+        <h3>✓ Reply Sent!</h3>
+        <p>Your reply has been sent successfully.</p>
+        <button id="closeSuccess" class="success-btn">OK</button>
+    </div>
+
+    <script src="vendor-feedback.js"></script>
+</body>
+</html>
