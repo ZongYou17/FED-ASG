@@ -401,6 +401,53 @@
     </div>
 
     <script>
+        // Header navigation functions
+    function goHome() {
+        window.location.href = '../Main-Page/MainPage.html';
+    }
+
+    function showLogin() {
+        alert('Login feature coming soon!');
+    }
+
+    function showVendorLogin() {
+        alert('Vendor login feature coming soon!');
+    }
+
+    function showOrderHistory() {
+        alert('Order history feature coming soon!');
+    }
+
+    function viewCart() {
+        window.location.href = '../Ordering & Checkout/Cart/cart.html';
+    }
+
+    function feedback() {
+        // Already on feedback page, could scroll to top or reload
+        window.scrollTo(0, 0);
+    }
+
+    // Update cart count on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        updateCartCount();
+    });
+
+    function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('hawkerCart')) || [];
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        
+        const cartCountSpan = document.getElementById('cart-count');
+        if (cartCountSpan) {
+            cartCountSpan.textContent = totalItems;
+        }
+        
+        // Add visual indicator if there are items
+        const cartButton = document.querySelector('.Cart');
+        if (cartButton && totalItems > 0) {
+            cartButton.classList.add('has-items');
+        }
+    }
+
         // Navigation
         const navButtons = document.querySelectorAll('.nav-btn');
         const views = document.querySelectorAll('.view');
