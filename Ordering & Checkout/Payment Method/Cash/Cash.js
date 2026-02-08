@@ -52,7 +52,7 @@ document.getElementById('cashForm').addEventListener('submit', function(e) {
     
     // Simulate order processing
     setTimeout(() => {
-        alert('Confirmation email sent!\n\nEstimated delivery: 2-3 business days\n\nThank you for your order!');
+        alert('Confirmation email sent!\nThank you for your order!');
         // Redirect to success page
         window.location.href = '../../PaymentSucessful/Success.html?method=Cash on Delivery';
     }, 1000);
