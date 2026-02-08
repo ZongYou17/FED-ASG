@@ -5,34 +5,36 @@
   <title>Order History</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Shared styling -->
-  <link rel="stylesheet" href="../css/orderhistory.css" />
-
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="orderhistory.css" />
 </head>
 
 <body>
-  <header class="page-header">
+
+  <!-- HEADER -->
+  <header class="navbar">
     <h1>Order History</h1>
-    <p>View and manage all past customer orders</p>
+    <a href="../Main-Page/MainPage.html" class="back-btn">⬅ Back to Main Page</a>
   </header>
 
+  <!-- FILTER -->
   <section class="filter-section">
-    <label for="hawkerFilter">Filter by Hawker Centre</label>
+    <label for="hawkerFilter">Filter by Hawker Centre:</label>
     <select id="hawkerFilter">
-      <option value="all">All Hawker Centres</option>
+      <option value="all">All</option>
       <option value="Maxwell Food Centre">Maxwell Food Centre</option>
       <option value="Lau Pa Sat">Lau Pa Sat</option>
       <option value="Chinatown Complex">Chinatown Complex</option>
     </select>
   </section>
 
-  <section id="orderHistoryContainer" class="order-history-grid">
-    <!-- Orders injected by JS -->
+  <!-- ORDERS -->
+  <section id="orderHistoryContainer" class="order-grid">
+    <!-- JS injects orders -->
   </section>
 
-  <script src="../js/orderhistory.js"></script>
+  <!-- JS -->
+  <script src="OrderHistory.js"></script>
 </body>
 </html>
+
